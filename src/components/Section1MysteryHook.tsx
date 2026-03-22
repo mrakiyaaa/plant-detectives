@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const options = [
@@ -82,6 +83,7 @@ function EarthIllustration() {
 export default function Section1MysteryHook() {
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
+  const router = useRouter();
   const isCorrect = selected !== null && options[selected].correct;
 
   const handleSelect = (i: number) => {
@@ -89,9 +91,8 @@ export default function Section1MysteryHook() {
     setAnswered(true);
   };
 
-  const scrollToNext = () => {
-    const el = document.getElementById("section-1");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const goToScience = () => {
+    router.push("/science");
   };
 
   return (
@@ -181,11 +182,11 @@ export default function Section1MysteryHook() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, type: "spring" }}
-          onClick={scrollToNext}
+          onClick={goToScience}
           className="bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-3 rounded-full text-lg shadow-lg shadow-green-200 transition-colors cursor-pointer"
           aria-label="Continue to next section"
         >
-          Let&apos;s Explore the Science &darr;
+          Let&apos;s Explore the Science &rarr;
         </motion.button>
       )}
     </section>
