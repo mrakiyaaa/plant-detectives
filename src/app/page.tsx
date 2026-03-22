@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Target, Rocket } from "lucide-react";
 
 const stagger = {
   hidden: {},
@@ -19,8 +21,24 @@ const fadeUp = {
   },
 };
 
+const panelContent = {
+  vision: {
+    icon: "🌍",
+    title: "Our Vision",
+    body: "Our vision is to build a future where the Earth stays clean, green, safe, and full of life for children, animals, and plants. We want young minds to grow up loving nature, understanding the changes happening around them, and believing that even small hands can help protect the planet.",
+  },
+  mission: {
+    icon: "🚀",
+    title: "Our Mission",
+    body: "Our mission is to educate and empower the next generation through interactive experiences that make climate science fun, accessible, and actionable. We turn complex environmental topics into engaging stories that inspire kids to become everyday climate heroes.",
+  },
+};
+
 export default function Home() {
   const router = useRouter();
+  const [activePanel, setActivePanel] = useState<
+    "vision" | "mission" | null
+  >(null);
 
   return (
     <main
@@ -94,6 +112,73 @@ export default function Home() {
           Get Started &rarr;
         </motion.button>
       </motion.div>
+
+      {/* Floating Vision & Mission icon buttons with side cards */}
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
+        {(
+          [
+            { type: "vision" as const, Icon: Target, delay: 1.2 },
+            { type: "mission" as const, Icon: Rocket, delay: 1.35 },
+          ]
+        ).map(({ type, Icon, delay }) => {
+          const isOpen = activePanel === type;
+          return (
+            <motion.div
+              key={type}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay, duration: 0.5, ease: "easeOut" as const }}
+              className="relative"
+              style={{ width: 48, height: 48 }}
+            >
+              {/* Expanding card — absolutely positioned to the left of the icon */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key={`${type}-card`}
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 12 }}
+                    transition={{ duration: 0.25, ease: "easeOut" as const }}
+                    className="absolute top-1/2 -translate-y-1/2 rounded-2xl bg-white border border-gray-200 p-5"
+                    style={{
+                      right: 60,
+                      width: 260,
+                      boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon size={16} color="#22c55e" />
+                      <span className="text-sm font-bold" style={{ color: "#1f2937" }}>
+                        {panelContent[type].title}
+                      </span>
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: "#4b5563" }}>
+                      {panelContent[type].body}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Circular icon trigger */}
+              <motion.button
+                onClick={() => setActivePanel(isOpen ? null : type)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center rounded-full cursor-pointer transition-colors"
+                style={{
+                  width: 48,
+                  height: 48,
+                  backgroundColor: isOpen ? "#22c55e" : "#ffffff",
+                  border: "2px solid #22c55e",
+                }}
+              >
+                <Icon size={22} color={isOpen ? "#ffffff" : "#22c55e"} />
+              </motion.button>
+            </motion.div>
+          );
+        })}
+      </div>
     </main>
   );
 }
