@@ -23,12 +23,10 @@ const fadeUp = {
 
 const panelContent = {
   vision: {
-    icon: "🌍",
     title: "Our Vision",
     body: "Our vision is to build a future where the Earth stays clean, green, safe, and full of life for children, animals, and plants. We want young minds to grow up loving nature, understanding the changes happening around them, and believing that even small hands can help protect the planet.",
   },
   mission: {
-    icon: "🚀",
     title: "Our Mission",
     body: "Our mission is to educate and empower the next generation through interactive experiences that make climate science fun, accessible, and actionable. We turn complex environmental topics into engaging stories that inspire kids to become everyday climate heroes.",
   },
