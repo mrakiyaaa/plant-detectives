@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaLightbulb } from "react-icons/fa";
 
 interface Question {
   question: string;
@@ -45,6 +46,19 @@ const questions: Question[] = [
     ],
     correct: 1,
   },
+];
+
+const bgParticles = [
+  { type: "question", x: "3%",  y: "10%", size: 80,  color: "#c4b5fd", delay: 0,   duration: 5.5 },
+  { type: "bulb",     x: "12%", y: "65%", size: 60,  color: "#fcd34d", delay: 1.2, duration: 7   },
+  { type: "question", x: "22%", y: "35%", size: 56,  color: "#f9a8d4", delay: 0.5, duration: 6.5 },
+  { type: "bulb",     x: "35%", y: "78%", size: 64,  color: "#fcd34d", delay: 2,   duration: 8   },
+  { type: "question", x: "46%", y: "6%",  size: 48,  color: "#a5b4fc", delay: 1.5, duration: 5   },
+  { type: "question", x: "58%", y: "52%", size: 72,  color: "#c4b5fd", delay: 0.3, duration: 7.5 },
+  { type: "bulb",     x: "68%", y: "18%", size: 58,  color: "#fcd34d", delay: 1,   duration: 6   },
+  { type: "question", x: "78%", y: "72%", size: 52,  color: "#f9a8d4", delay: 0.8, duration: 8.5 },
+  { type: "bulb",     x: "88%", y: "38%", size: 66,  color: "#fcd34d", delay: 1.8, duration: 5.5 },
+  { type: "question", x: "93%", y: "85%", size: 44,  color: "#a5b4fc", delay: 2.5, duration: 7   },
 ];
 
 export default function Section6Quiz() {
@@ -94,8 +108,38 @@ export default function Section6Quiz() {
   return (
     <section
       id="section-5"
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20 bg-gradient-to-b from-violet-50/40 via-white to-purple-50/30"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20 bg-gradient-to-b from-violet-50/40 via-white to-purple-50/30 overflow-hidden"
     >
+      {/* Background particles */}
+      {bgParticles.map((p, i) => (
+        <motion.div
+          key={i}
+          className="absolute pointer-events-none z-0"
+          style={{ left: p.x, top: p.y }}
+          animate={{
+            y: [0, -18, 0, 18, 0],
+            x: [0, 8, 0, -8, 0],
+            opacity: [0.3, 0.7, 0.3],
+            rotate: [0, 12, -12, 0],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: p.duration,
+            delay: p.delay,
+            ease: "easeInOut",
+          }}
+        >
+          {p.type === "question" ? (
+            <span style={{ fontSize: p.size, color: p.color, fontWeight: 900, lineHeight: 1 }}>
+              ?
+            </span>
+          ) : (
+            <FaLightbulb size={p.size} color={p.color} />
+          )}
+        </motion.div>
+      ))}
+
+      <div className="relative z-10 w-full flex flex-col items-center">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +147,7 @@ export default function Section6Quiz() {
         transition={{ duration: 0.7 }}
         className="text-3xl sm:text-4xl md:text-5xl font-black text-center text-slate-800 mb-10"
       >
-        Test Your Knowledge 🧠
+        Test Your Knowledge
       </motion.h2>
 
       <motion.div
@@ -242,6 +286,7 @@ export default function Section6Quiz() {
           </motion.div>
         )}
       </motion.div>
+      </div>
     </section>
   );
 }

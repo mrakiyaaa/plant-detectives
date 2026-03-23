@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaSeedling, FaFire } from "react-icons/fa";
+import { BsCloudSun } from "react-icons/bs";
+import type { IconType } from "react-icons";
 
 const cfQuestions = [
   {
@@ -30,24 +33,27 @@ type Result = "LOW" | "MEDIUM" | "HIGH";
 
 const resultData: Record<
   Result,
-  { emoji: string; color: string; bg: string; border: string; tip: string }
+  { Icon: IconType; iconColor: string; color: string; bg: string; border: string; tip: string }
 > = {
   LOW: {
-    emoji: "🌱",
+    Icon: FaSeedling,
+    iconColor: "#22c55e",
     color: "text-green-600",
     bg: "bg-green-50",
     border: "border-green-300",
     tip: "Amazing! You're already making great choices for the planet. Keep inspiring others to follow your lead — small habits make a big difference when everyone does them!",
   },
   MEDIUM: {
-    emoji: "🌤️",
+    Icon: BsCloudSun,
+    iconColor: "#eab308",
     color: "text-yellow-600",
     bg: "bg-yellow-50",
     border: "border-yellow-300",
     tip: "You're on the right track! Try swapping one more habit — like choosing public transport more often or cutting back on meat one extra day a week. Every little change adds up!",
   },
   HIGH: {
-    emoji: "🔥",
+    Icon: FaFire,
+    iconColor: "#ef4444",
     color: "text-red-600",
     bg: "bg-red-50",
     border: "border-red-300",
@@ -188,18 +194,12 @@ export default function Section7CarbonCalculator() {
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{
-                    delay: 0.2,
-                    type: "spring",
-                    stiffness: 300,
-                  }}
-                  className="text-5xl mb-3"
+                  transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
+                  className="flex justify-center mb-3"
                 >
-                  {data.emoji}
+                  <data.Icon size={48} color={data.iconColor} />
                 </motion.div>
-                <h3
-                  className={`text-2xl font-black mb-1 ${data.color}`}
-                >
+                <h3 className={`text-2xl font-black mb-1 ${data.color}`}>
                   {result} IMPACT
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">

@@ -2,10 +2,22 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaWater, FaFire, FaSun } from "react-icons/fa";
+import { GiTornado } from "react-icons/gi";
+import type { IconType } from "react-icons";
 
-const impacts = [
+const impacts: {
+  Icon: IconType;
+  iconColor: string;
+  title: string;
+  color: string;
+  bgLight: string;
+  borderColor: string;
+  description: string;
+}[] = [
   {
-    icon: "\u{1F30A}",
+    Icon: FaWater,
+    iconColor: "#3b82f6",
     title: "Rising Sea Levels",
     color: "from-blue-400 to-cyan-400",
     bgLight: "bg-blue-50",
@@ -14,7 +26,8 @@ const impacts = [
       "As global temperatures rise, glaciers and ice sheets melt, adding water to our oceans. Water also expands when it warms. Sea levels have risen about 20 cm since 1900, threatening coastal cities and small island nations where millions of people live.",
   },
   {
-    icon: "\u{1F525}",
+    Icon: FaFire,
+    iconColor: "#f97316",
     title: "Extreme Heat",
     color: "from-orange-400 to-red-400",
     bgLight: "bg-orange-50",
@@ -23,7 +36,8 @@ const impacts = [
       "Heatwaves are becoming more frequent and intense. Extreme heat can cause droughts, damage crops, and make it dangerous for people to work or play outside. In some regions, temperatures now regularly exceed levels the human body can safely handle.",
   },
   {
-    icon: "\u{1F32A}\u{FE0F}",
+    Icon: GiTornado,
+    iconColor: "#a855f7",
     title: "Severe Storms",
     color: "from-purple-400 to-indigo-400",
     bgLight: "bg-purple-50",
@@ -32,7 +46,8 @@ const impacts = [
       "Warmer oceans provide more energy for storms, making hurricanes, cyclones, and typhoons stronger. Warmer air holds more moisture, leading to heavier rainfall and flooding. These extreme weather events destroy homes and displace communities.",
   },
   {
-    icon: "\u{1F3DC}\u{FE0F}",
+    Icon: FaSun,
+    iconColor: "#f59e0b",
     title: "Droughts & Wildfires",
     color: "from-amber-400 to-orange-500",
     bgLight: "bg-amber-50",
@@ -93,17 +108,12 @@ export default function Section3Impacts() {
               aria-label={impact.title}
             >
               <div className="flex items-center gap-3 mb-1">
-                <motion.span
-                  className="text-3xl"
-                  animate={
-                    expanded === i
-                      ? { rotate: [0, -10, 10, 0] }
-                      : {}
-                  }
+                <motion.div
+                  animate={expanded === i ? { rotate: [0, -10, 10, 0] } : {}}
                   transition={{ duration: 0.5 }}
                 >
-                  {impact.icon}
-                </motion.span>
+                  <impact.Icon size={28} color={impact.iconColor} />
+                </motion.div>
                 <h3 className="text-lg sm:text-xl font-bold text-slate-800">
                   {impact.title}
                 </h3>

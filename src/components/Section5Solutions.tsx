@@ -2,45 +2,60 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaSun, FaBus, FaTree, FaRecycle, FaBookOpen } from "react-icons/fa";
+import { GiWheat } from "react-icons/gi";
+import type { IconType } from "react-icons";
 
-const solutions = [
+const solutions: {
+  Icon: IconType;
+  iconColor: string;
+  title: string;
+  color: string;
+  description: string;
+}[] = [
   {
-    icon: "☀️",
+    Icon: FaSun,
+    iconColor: "#eab308",
     title: "Renewable Energy",
     color: "bg-yellow-50 border-yellow-200",
     description:
       "Solar panels, wind turbines, and hydropower generate electricity without burning fossil fuels. Switching to renewables can cut energy-related CO₂ emissions by up to 90%. Many countries now get over 50% of their electricity from renewables, and the cost of solar energy has dropped by 90% in the last decade.",
   },
   {
-    icon: "🚌",
+    Icon: FaBus,
+    iconColor: "#3b82f6",
     title: "Electric Transport",
     color: "bg-blue-50 border-blue-200",
     description:
       "Electric vehicles (EVs), buses, and trains produce zero direct emissions. Combined with renewable energy, electric transport can eliminate the 16% of global emissions that come from transportation. Walking and cycling are even better — they produce no emissions at all!",
   },
   {
-    icon: "🌳",
+    Icon: FaTree,
+    iconColor: "#22c55e",
     title: "Reforestation",
     color: "bg-green-50 border-green-200",
     description:
       "Planting trees is one of the most effective ways to remove CO₂ from the atmosphere. A single tree can absorb about 22 kg of CO₂ per year. Restoring forests also protects biodiversity, prevents soil erosion, and supports local communities. We need to plant billions of trees while also protecting existing forests.",
   },
   {
-    icon: "🌾",
+    Icon: GiWheat,
+    iconColor: "#65a30d",
     title: "Sustainable Farming",
     color: "bg-lime-50 border-lime-200",
     description:
       "Sustainable farming practices like crop rotation, reducing food waste, and using less fertiliser can significantly cut agricultural emissions. Eating more plant-based foods also helps — producing beef creates 60x more emissions than growing peas for the same amount of protein.",
   },
   {
-    icon: "♻️",
+    Icon: FaRecycle,
+    iconColor: "#14b8a6",
     title: "Reduce Waste",
     color: "bg-teal-50 border-teal-200",
     description:
       "When waste decomposes in landfills, it produces methane — a greenhouse gas 80x more potent than CO₂ over 20 years. Reducing, reusing, and recycling cuts emissions from waste. Composting food scraps, avoiding single-use plastics, and buying less stuff all make a real difference.",
   },
   {
-    icon: "📚",
+    Icon: FaBookOpen,
+    iconColor: "#a855f7",
     title: "Policy & Education",
     color: "bg-purple-50 border-purple-200",
     description:
@@ -97,7 +112,7 @@ export default function Section5Solutions() {
               aria-label={sol.title}
             >
               <div className="flex items-center gap-3 mb-1">
-                <span className="text-2xl">{sol.icon}</span>
+                <sol.Icon size={22} color={sol.iconColor} />
                 <h3 className="text-base sm:text-lg font-bold text-slate-800">
                   {sol.title}
                 </h3>

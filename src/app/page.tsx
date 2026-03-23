@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <main
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden -mt-14"
       style={{
         backgroundImage: "url('/images/home-bg.png')",
         backgroundSize: "cover",
@@ -58,13 +58,13 @@ export default function Home() {
         animate="show"
         className="relative z-10 flex flex-col items-center text-center px-6"
       >
-        {/* Badge */}
-        <motion.span
+        {/* Tagline */}
+        <motion.p
           variants={fadeUp}
-          className="inline-block mb-6 px-5 py-2 rounded-full text-sm font-medium text-white bg-white/15 border border-white/25 backdrop-blur-sm"
+          className="mb-6 text-sm sm:text-base md:text-lg text-white/70 tracking-[0.3em] uppercase font-medium"
         >
-          🌍 An Interactive Climate Journey
-        </motion.span>
+          Explore &middot; Learn &middot; Act
+        </motion.p>
 
         {/* Main heading */}
         <motion.h1
@@ -89,14 +89,6 @@ export default function Home() {
               transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
             />
           </span>
-        </motion.p>
-
-        {/* Tagline */}
-        <motion.p
-          variants={fadeUp}
-          className="mt-5 text-sm sm:text-base text-white/70 tracking-[0.3em] uppercase font-medium"
-        >
-          Explore &middot; Learn &middot; Act
         </motion.p>
 
         {/* CTA button */}

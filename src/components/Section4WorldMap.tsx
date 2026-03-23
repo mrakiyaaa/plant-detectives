@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ComposableMap,
@@ -96,8 +96,8 @@ function RiskBadge({ level }: { level: string }) {
     Low: "bg-green-100 text-green-700",
     Medium: "bg-yellow-100 text-yellow-700",
     High: "bg-red-100 text-red-700",
-    "Critical": "bg-red-200 text-red-800",
-    "Extreme": "bg-red-200 text-red-800",
+    Critical: "bg-red-200 text-red-800",
+    Extreme: "bg-red-200 text-red-800",
   };
   const match = Object.keys(colors).find((k) => level.includes(k));
   return (
@@ -113,6 +113,38 @@ function RiskBadge({ level }: { level: string }) {
 
 export default function Section4WorldMap() {
   const [activeRegion, setActiveRegion] = useState<number | null>(null);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  const handleDotClick = (e: React.MouseEvent<SVGCircleElement>, i: number) => {
+    if (activeRegion === i) {
+      setActiveRegion(null);
+      return;
+    }
+    const rect = mapRef.current?.getBoundingClientRect();
+    if (rect) {
+      setTooltipPos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    }
+    setActiveRegion(i);
+  };
+
+  const getTooltipTransform = () => {
+    if (!mapRef.current) return "translate(-50%, -108%)";
+    const { width, height } = mapRef.current.getBoundingClientRect();
+
+    let x = "-50%";
+    let y = "-108%";
+
+    if (tooltipPos.x > width * 0.72) x = "-88%";
+    else if (tooltipPos.x < width * 0.28) x = "-12%";
+
+    if (tooltipPos.y < height * 0.32) y = "16px";
+
+    return `translate(${x}, ${y})`;
+  };
 
   return (
     <section
@@ -147,7 +179,10 @@ export default function Section4WorldMap() {
         transition={{ delay: 0.3, duration: 0.6 }}
         className="w-full max-w-4xl"
       >
-        <div className="bg-white rounded-3xl shadow-lg p-2 sm:p-4 border border-slate-100">
+        <div
+          ref={mapRef}
+          className="relative bg-white rounded-3xl shadow-lg p-2 sm:p-4 border border-slate-100"
+        >
           <ComposableMap
             projection="geoMercator"
             projectionConfig={{ scale: 120, center: [10, 20] }}
@@ -181,9 +216,7 @@ export default function Section4WorldMap() {
                   stroke="white"
                   strokeWidth={2}
                   style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    setActiveRegion(activeRegion === i ? null : i)
-                  }
+                  onClick={(e) => handleDotClick(e, i)}
                 >
                   <animate
                     attributeName="r"
@@ -195,6 +228,70 @@ export default function Section4WorldMap() {
               </Marker>
             ))}
           </ComposableMap>
+
+          {/* Floating tooltip near dot */}
+          <AnimatePresence mode="wait">
+            {activeRegion !== null && (
+              <motion.div
+                key={activeRegion}
+                initial={{ opacity: 0, scale: 0.88 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.88 }}
+                transition={{ duration: 0.2 }}
+                style={{
+                  position: "absolute",
+                  left: tooltipPos.x,
+                  top: tooltipPos.y,
+                  transform: getTooltipTransform(),
+                  width: 272,
+                  zIndex: 50,
+                }}
+                className="bg-white rounded-2xl shadow-xl border border-slate-100 p-4"
+              >
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="text-sm font-bold text-slate-800 leading-tight">
+                    {regions[activeRegion].name}
+                  </h3>
+                  <button
+                    onClick={() => setActiveRegion(null)}
+                    className="text-slate-400 hover:text-slate-600 shrink-0 cursor-pointer"
+                    aria-label="Close"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </button>
+                </div>
+                <p className="text-xs text-slate-500 leading-relaxed mb-3">
+                  {regions[activeRegion].summary}
+                </p>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="bg-slate-50 rounded-lg p-2">
+                    <p className="font-semibold text-slate-700 mb-1">Flood Risk</p>
+                    <RiskBadge level={regions[activeRegion].floodRisk} />
+                  </div>
+                  <div className="bg-slate-50 rounded-lg p-2">
+                    <p className="font-semibold text-slate-700 mb-1">Drought</p>
+                    <p className="text-slate-500 leading-tight">
+                      {regions[activeRegion].droughtCondition}
+                    </p>
+                  </div>
+                  <div className="bg-slate-50 rounded-lg p-2">
+                    <p className="font-semibold text-slate-700 mb-1">Sea Level</p>
+                    <p className="text-slate-500 leading-tight">
+                      {regions[activeRegion].seaLevelImpact}
+                    </p>
+                  </div>
+                  <div className="bg-slate-50 rounded-lg p-2">
+                    <p className="font-semibold text-slate-700 mb-1">Heat Trend</p>
+                    <p className="text-slate-500 leading-tight">
+                      {regions[activeRegion].heatTrend}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Legend */}
@@ -213,64 +310,6 @@ export default function Section4WorldMap() {
           </span>
         </div>
       </motion.div>
-
-      {/* Info Panel */}
-      <AnimatePresence mode="wait">
-        {activeRegion !== null && (
-          <motion.div
-            key={activeRegion}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="mt-6 w-full max-w-2xl bg-white rounded-2xl shadow-lg border border-slate-100 p-6"
-          >
-            <h3 className="text-xl font-bold text-slate-800 mb-2">
-              {regions[activeRegion].name}
-            </h3>
-            <p className="text-sm text-slate-600 mb-4">
-              {regions[activeRegion].summary}
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-              <div className="flex items-start gap-2">
-                <span className="text-blue-500 mt-0.5">🌊</span>
-                <div>
-                  <p className="font-semibold text-slate-700">Flood Risk</p>
-                  <RiskBadge level={regions[activeRegion].floodRisk} />
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-amber-500 mt-0.5">☀️</span>
-                <div>
-                  <p className="font-semibold text-slate-700">Drought</p>
-                  <p className="text-slate-500 text-xs">
-                    {regions[activeRegion].droughtCondition}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-cyan-500 mt-0.5">📈</span>
-                <div>
-                  <p className="font-semibold text-slate-700">
-                    Sea Level Impact
-                  </p>
-                  <p className="text-slate-500 text-xs">
-                    {regions[activeRegion].seaLevelImpact}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-red-500 mt-0.5">🌡️</span>
-                <div>
-                  <p className="font-semibold text-slate-700">Heat Trend</p>
-                  <p className="text-slate-500 text-xs">
-                    {regions[activeRegion].heatTrend}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

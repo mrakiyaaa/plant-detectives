@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaLeaf, FaRecycle, FaGlobeAmericas, FaSeedling, FaHeart } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 const pledges = [
   "I save electricity",
@@ -11,10 +13,10 @@ const pledges = [
   "I spread awareness to friends",
 ];
 
-const badges = [
-  { min: 3, label: "Climate Learner 🌿", color: "from-green-400 to-emerald-500" },
-  { min: 4, label: "Eco Supporter ♻️", color: "from-teal-400 to-cyan-500" },
-  { min: 5, label: "Planet Protector 🌍", color: "from-blue-500 to-indigo-500" },
+const badges: { min: number; label: string; Icon: IconType; color: string }[] = [
+  { min: 3, label: "Climate Learner", Icon: FaLeaf, color: "from-green-400 to-emerald-500" },
+  { min: 4, label: "Eco Supporter", Icon: FaRecycle, color: "from-teal-400 to-cyan-500" },
+  { min: 5, label: "Planet Protector", Icon: FaGlobeAmericas, color: "from-blue-500 to-indigo-500" },
 ];
 
 export default function Section8Pledge() {
@@ -38,16 +40,25 @@ export default function Section8Pledge() {
   return (
     <section
       id="section-7"
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20 bg-gradient-to-b from-emerald-50/40 via-white to-green-50/40"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20 overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/last-page-img.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+      <div className="relative z-10 w-full flex flex-col items-center">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7 }}
-        className="text-3xl sm:text-4xl md:text-5xl font-black text-center text-slate-800 mb-4"
+        className="text-3xl sm:text-4xl md:text-5xl font-black text-center text-white mb-4 flex items-center justify-center gap-3"
       >
-        Your Planet Needs You 🌱
+        Your Planet Needs You
+        <FaSeedling size={32} color="#22c55e" />
       </motion.h2>
 
       <motion.p
@@ -55,7 +66,7 @@ export default function Section8Pledge() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-base sm:text-lg text-slate-500 text-center max-w-xl mb-10"
+        className="text-base sm:text-lg text-white/80 text-center max-w-xl mb-10"
       >
         Make a personal pledge to help our planet. Check the actions you commit
         to doing — and earn a badge!
@@ -118,12 +129,7 @@ export default function Section8Pledge() {
                   transition={{ duration: 0.3 }}
                 >
                   {checked[i] && (
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                    >
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <path
                         d="M2 7L5.5 10.5L12 3.5"
                         stroke="white"
@@ -157,7 +163,7 @@ export default function Section8Pledge() {
                 className="text-center"
               >
                 <motion.div
-                  className={`inline-block bg-gradient-to-r ${currentBadge.color} text-white font-black text-lg sm:text-xl px-6 py-3 rounded-2xl shadow-lg`}
+                  className={`inline-flex items-center gap-2 bg-gradient-to-r ${currentBadge.color} text-white font-black text-lg sm:text-xl px-6 py-3 rounded-2xl shadow-lg`}
                   animate={{
                     boxShadow: [
                       "0 0 0px rgba(34,197,94,0)",
@@ -167,6 +173,7 @@ export default function Section8Pledge() {
                   }}
                   transition={{ repeat: Infinity, duration: 2 }}
                 >
+                  <currentBadge.Icon size={18} />
                   {currentBadge.label}
                 </motion.div>
               </motion.div>
@@ -178,9 +185,10 @@ export default function Section8Pledge() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="text-center text-slate-500 text-sm mt-6 leading-relaxed"
+              className="text-center text-white text-sm mt-6 leading-relaxed flex items-center justify-center gap-1.5"
             >
-              Every action counts. You&apos;re part of the solution. 💚
+              Every action counts. You&apos;re part of the solution.
+              <FaHeart size={14} color="#22c55e" />
             </motion.p>
           )}
         </div>
@@ -192,14 +200,18 @@ export default function Section8Pledge() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5 }}
-        className="mt-16 text-center text-xs text-slate-400"
+        className="mt-16 text-center text-xs text-white"
       >
         <p>
           Planet Detectives — An interactive learning experience about climate
           change.
         </p>
-        <p className="mt-1">Built with care for our planet. 🌍</p>
+        <p className="mt-1 flex items-center justify-center gap-1">
+          Built with care for our planet.
+          <FaGlobeAmericas size={12} color="#94a3b8" />
+        </p>
       </motion.footer>
+      </div>
     </section>
   );
 }
