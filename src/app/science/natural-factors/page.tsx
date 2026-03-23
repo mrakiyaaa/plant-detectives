@@ -114,7 +114,7 @@ function SolarRadiationScene() {
 
       <div
         className="absolute rounded-full overflow-hidden shadow-lg"
-        style={{ right: "12%", top: "50%", translateY: "-50%", width: 68, height: 68 }}
+        style={{ right: "12%", top: "50%", transform: "translateY(-50%)", width: 68, height: 68 }}
       >
         <div className="w-full h-full rounded-full bg-gradient-to-br from-sky-400 to-blue-600">
           <div className="absolute top-3 left-4 w-6 h-4 rounded-full bg-green-500 opacity-80" />
