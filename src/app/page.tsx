@@ -24,7 +24,7 @@ const fadeUp = {
 const panelContent = {
   vision: {
     title: "Our Vision",
-    body: "Our vision is to build a future where the Earth stays clean, green, safe, and full of life for children, animals, and plants. We want young minds to grow up loving nature, understanding the changes happening around them, and believing that even small hands can help protect the planet.",
+    body: "Our vision is to build a future where the Earth stays clean, green, safe, and full of life for children, animals, and plants. We want young minds to grow up loving nature, understanding the changes happening around them, and believing that even small hands can help protect the planet",
   },
   mission: {
     title: "Our Mission",
