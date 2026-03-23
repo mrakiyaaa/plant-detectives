@@ -55,7 +55,7 @@ export default function Section1MysteryHook() {
   };
 
   const goToScience = () => {
-    router.push("/science");
+    router.push("/climate");
   };
 
   return (

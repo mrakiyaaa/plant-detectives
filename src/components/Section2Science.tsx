@@ -8,7 +8,7 @@ const cards = [
     title: "Greenhouse Gases",
     description:
       "Discover what greenhouse gases are, how they trap heat in the atmosphere, and interact with a live climate slider.",
-    href: "/science/greenhouse-gases",
+    href: "/climate/greenhouse-gases",
     bg: "from-sky-50 to-blue-50",
     border: "border-sky-200",
     titleColor: "text-sky-700",
@@ -18,7 +18,7 @@ const cards = [
     title: "Human Activities",
     description:
       "Explore how transportation, agriculture, deforestation, and industrial processes drive climate change.",
-    href: "/science/human-activities",
+    href: "/climate/human-activities",
     bg: "from-orange-50 to-amber-50",
     border: "border-orange-200",
     titleColor: "text-orange-700",
@@ -28,7 +28,7 @@ const cards = [
     title: "Natural Factors",
     description:
       "Learn how volcanic eruptions and solar radiation contribute to natural climate variability.",
-    href: "/science/natural-factors",
+    href: "/climate/natural-factors",
     bg: "from-green-50 to-emerald-50",
     border: "border-green-200",
     titleColor: "text-green-700",
