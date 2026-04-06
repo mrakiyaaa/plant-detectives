@@ -2,34 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { motion } from "framer-motion";
-
-const gases = [
-  {
-    name: "Carbon Dioxide (CO2)",
-    source: "Burning fossil fuels, deforestation",
-    impact: "Stays in the atmosphere for hundreds of years",
-    level: 80,
-  },
-  {
-    name: "Methane (CH4)",
-    source: "Livestock, natural gas leaks, landfills",
-    impact: "80x more potent than CO2 over 20 years",
-    level: 60,
-  },
-  {
-    name: "Nitrous Oxide (N2O)",
-    source: "Fertilisers, livestock waste",
-    impact: "300x more potent than CO2 over 100 years",
-    level: 40,
-  },
-  {
-    name: "Water Vapour (H2O)",
-    source: "Evaporation from oceans and land",
-    impact: "Most abundant greenhouse gas — amplifies warming",
-    level: 90,
-  },
-];
 
 function SkyScene({ value }: { value: number }) {
   const temp = (1.2 + (value / 100) * 2.6).toFixed(1);
@@ -121,87 +95,113 @@ export default function GreenhouseGasesPage() {
         Back to Climate
       </button>
 
+      {/* Section 1: Greenhouse Gases and Effect */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl sm:text-4xl font-black text-slate-800 mb-4"
+        className="text-3xl sm:text-4xl font-black text-slate-800 mb-6"
       >
-        What are Greenhouse Gases?
+        Greenhouse Gases and Effect
       </motion.h1>
 
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-10 text-base sm:text-lg"
+        className="text-slate-600 leading-relaxed mb-8 text-base sm:text-lg"
       >
-        Greenhouse gases are gases in Earth&apos;s atmosphere that absorb and
-        re-emit infrared radiation, keeping the planet warm enough to support
-        life. They act like the glass in a greenhouse — letting sunlight in but
-        slowing the escape of heat. The key ones are carbon dioxide, methane,
-        nitrous oxide, and water vapour.
+        Greenhouse gases are atmospheric gases — some occurring naturally, like water vapour, carbon dioxide (CO₂), methane (CH₄), and nitrous oxide (N₂O) — that possess the ability to absorb and re-emit infrared radiation, thereby trapping heat within the Earth&apos;s atmosphere. This heat-trapping mechanism is a fundamental component of the Earth&apos;s climate system, as it helps regulate and maintain the planet&apos;s surface temperature at levels suitable for life.
       </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14"
+        className="mb-12"
       >
-        {gases.map((gas, i) => (
-          <div
-            key={i}
-            className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100"
-          >
-            <h3 className="font-bold text-slate-800 mb-1">{gas.name}</h3>
-            <p className="text-xs text-slate-500 mb-1">Source: {gas.source}</p>
-            <p className="text-xs text-sky-700 font-medium mb-3">{gas.impact}</p>
-            <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-sky-400 rounded-full"
-                initial={{ width: 0 }}
-                animate={{ width: `${gas.level}%` }}
-                transition={{ delay: 0.6 + i * 0.1, duration: 0.8 }}
-              />
-            </div>
-          </div>
-        ))}
+        <Image
+          src="/images/climate/Earth's_greenhouse_effect_(US_EPA,_2012).png"
+          alt="Greenhouse gases and Earth's atmosphere diagram"
+          width={800}
+          height={500}
+          className="w-full h-auto rounded-2xl shadow-md"
+        />
       </motion.div>
 
+      {/* Section 2: The Greenhouse Effect */}
       <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
         className="text-2xl sm:text-3xl font-black text-slate-800 mb-4"
       >
-        How They Affect Climate Change
+        The Greenhouse Effect
       </motion.h2>
 
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-10 text-base sm:text-lg"
+        className="text-slate-600 leading-relaxed mb-8 text-base sm:text-lg"
       >
-        When sunlight reaches Earth, the surface absorbs it and radiates heat
-        upward. Greenhouse gases in the upper atmosphere capture this outgoing
-        heat and send some of it back down, raising global temperatures. As
-        humans release more greenhouse gases by burning fossil fuels and
-        clearing forests, this blanket gets thicker — trapping more heat and
-        intensifying climate change.
+        The greenhouse effect is a natural physical process in which certain gases in the Earth&apos;s atmosphere absorb outgoing infrared radiation from the Earth&apos;s surface and re-radiate it back, preventing excessive heat loss into space. This process maintains the Earth&apos;s energy balance and keeps the global temperature within a habitable range.
       </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.6 }}
+        className="mb-12"
+      >
+        <Image
+          src="/images/climate/Figure-1-Schematics-of-the-Greenhouse-Gas-Effect.jpg"
+          alt="Schematic diagram of the greenhouse effect"
+          width={800}
+          height={500}
+          className="w-full h-auto rounded-2xl shadow-md"
+        />
+      </motion.div>
+
+      {/* Section 3: Reinforced Greenhouse Effect */}
+      <motion.h2
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7, duration: 0.6 }}
+        className="text-2xl sm:text-3xl font-black text-slate-800 mb-4"
+      >
+        Reinforced Greenhouse Effect
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="text-slate-600 leading-relaxed mb-4 text-base sm:text-lg"
+      >
+        The greenhouse effect becomes a problem when it is intensified by human activities.
+      </motion.p>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        className="text-slate-600 leading-relaxed mb-12 text-base sm:text-lg"
+      >
+        In its natural state, the greenhouse effect maintains a stable climate. However, human activities have increased greenhouse gas concentrations, strengthening this effect and leading to global warming.
+      </motion.p>
+
+      {/* Section 4: Interactive Climate Slider */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.6 }}
         className="w-full max-w-xl mx-auto mb-16"
       >
         <h3 className="text-lg font-bold text-slate-700 mb-2 text-center">
           Interactive Climate Slider
         </h3>
-        <p className="text-sm text-slate-400 text-center mb-4">
+        <p className="text-sm text-slate-500 text-center mb-4 font-medium">
           Drag to see what happens when greenhouse gases increase
         </p>
         <SkyScene value={sliderValue} />
@@ -217,6 +217,27 @@ export default function GreenhouseGasesPage() {
             aria-label="Greenhouse gas level"
           />
           <span className="text-sm text-red-600 font-semibold">High</span>
+        </div>
+      </motion.div>
+
+      {/* Section 5: YouTube Video */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.1, duration: 0.6 }}
+        className="mb-12"
+      >
+        <p className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg">
+          The following video provides a simple visual explanation of how the greenhouse effect works and how it contributes to climate change.
+        </p>
+        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+          <iframe
+            src="https://www.youtube.com/embed/SN5-DnOHQmE"
+            title="Greenhouse Effect Explanation"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full rounded-2xl shadow-md"
+          />
         </div>
       </motion.div>
     </main>
