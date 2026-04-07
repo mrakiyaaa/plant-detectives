@@ -108,7 +108,13 @@ export default function Section6Quiz() {
   return (
     <section
       id="section-5"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20 bg-gradient-to-b from-violet-50/40 via-white to-purple-50/30 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20 overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/Planet detective tools and checklist.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       {/* Background particles */}
       {bgParticles.map((p, i) => (

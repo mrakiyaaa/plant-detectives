@@ -29,7 +29,7 @@ export default function ClimateActionHubPage() {
     <main
       className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20"
       style={{
-        backgroundImage: "url('/images/Planet detective tools and checklist.png')",
+        backgroundImage: "url('/images/Eco-friendly icons on soft gradient background.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
