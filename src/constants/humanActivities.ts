@@ -5,6 +5,7 @@ export interface HumanActivity {
   description: string;
   gradientFrom: string;
   gradientTo: string;
+  image: string;
 }
 
 export const humanActivities: HumanActivity[] = [
@@ -15,6 +16,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'The burning of coal, oil, and natural gas for electricity, transport, and industry releases large amounts of carbon dioxide (CO₂). This is the largest source of greenhouse gas emissions, significantly enhancing the Greenhouse Effect and increasing global temperatures.',
     gradientFrom: 'from-red-400',
     gradientTo: 'to-orange-500',
+    image: '/images/human-activities/Children observing pollution in an industrial area.png',
   },
   {
     id: 'deforestation',
@@ -23,6 +25,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'Cutting down forests reduces the number of trees that absorb CO₂ from the atmosphere. When trees are burned or decompose, they also release stored carbon, increasing greenhouse gas concentrations and accelerating warming.',
     gradientFrom: 'from-green-400',
     gradientTo: 'to-emerald-500',
+    image: '/images/human-activities/Logging operation in dense forest.png',
   },
   {
     id: 'industrial',
@@ -31,6 +34,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'Factories and manufacturing processes release greenhouse gases such as CO₂, methane (CH₄), and nitrous oxide (N₂O). Industries like cement, steel, and chemical production are particularly high emitters due to energy-intensive operations.',
     gradientFrom: 'from-gray-400',
     gradientTo: 'to-slate-500',
+    image: '/images/human-activities/Industrial workers at coal furnace.png',
   },
   {
     id: 'agriculture',
@@ -39,6 +43,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'Agricultural activities release methane from livestock digestion (especially cattle) and rice cultivation. Fertilizers also release nitrous oxide, a powerful greenhouse gas that contributes significantly to global warming.',
     gradientFrom: 'from-yellow-400',
     gradientTo: 'to-amber-500',
+    image: '/images/human-activities/Agricultural sources of greenhouse gases.png',
   },
   {
     id: 'transportation',
@@ -47,6 +52,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'Cars, trucks, airplanes, and ships burn fossil fuels for energy, releasing large amounts of CO₂. Rapid urbanization and increased vehicle usage have made transportation one of the fastest-growing sources of emissions.',
     gradientFrom: 'from-blue-400',
     gradientTo: 'to-indigo-500',
+    image: '/images/human-activities/Sources of CO₂ emissions in motion.png',
   },
   {
     id: 'waste',
@@ -55,6 +61,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'Organic waste in landfills decomposes without oxygen, producing methane gas. Poor waste management and open dumping increase greenhouse gas emissions and contribute to local air pollution.',
     gradientFrom: 'from-purple-400',
     gradientTo: 'to-violet-500',
+    image: '/images/human-activities/Garbage dump chaos under hazy skies.png',
   },
   {
     id: 'energy-use',
@@ -63,6 +70,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'High demand for electricity in homes, industries, and cities — especially when generated from fossil fuels — leads to increased CO₂ emissions. Inefficient energy use and overconsumption further worsen the problem.',
     gradientFrom: 'from-cyan-400',
     gradientTo: 'to-teal-500',
+    image: '/images/human-activities/Modern family life and energy use.png',
   },
   {
     id: 'urbanization',
@@ -71,5 +79,6 @@ export const humanActivities: HumanActivity[] = [
     description: 'Rapid urban development leads to land clearing, increased energy use, and production of construction materials like cement and steel, all of which emit significant greenhouse gases.',
     gradientFrom: 'from-rose-400',
     gradientTo: 'to-pink-500',
+    image: '/images/human-activities/Urbanization through land, energy, and industry.png',
   },
 ];

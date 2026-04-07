@@ -226,15 +226,6 @@ function HotspotModal({
             </svg>
           </button>
 
-          {/* Big emoji */}
-          <motion.div
-            className="text-6xl mb-3 drop-shadow-lg"
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ repeat: Infinity, duration: 3 }}
-          >
-            {hotspot.icon}
-          </motion.div>
-
           <h2 className="text-xl font-black text-white leading-tight mb-1">
             {hotspot.title}
           </h2>

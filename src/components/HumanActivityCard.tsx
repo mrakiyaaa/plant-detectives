@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { HumanActivity } from "@/constants/humanActivities";
 
@@ -18,11 +19,14 @@ export default function HumanActivityCard({ activity, index }: HumanActivityCard
       }}
       className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105"
     >
-      {/* Gradient Header */}
-      <div className={`h-24 bg-gradient-to-r ${activity.gradientFrom} ${activity.gradientTo} relative overflow-hidden`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      {/* Image Header */}
+      <div className="relative h-44 overflow-hidden">
+        <Image
+          src={activity.image}
+          alt={activity.title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
 
