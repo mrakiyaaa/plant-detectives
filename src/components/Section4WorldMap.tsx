@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ComposableMap,
@@ -27,6 +28,7 @@ interface HotspotData {
   what: string;
   climateLink: string;
   specialFact: string;
+  image?: string;
 }
 
 const hotspots: HotspotData[] = [
@@ -44,6 +46,7 @@ const hotspots: HotspotData[] = [
     what: "Huge wildfires destroyed forests, homes, and entire towns across California. The Camp Fire became the deadliest and most destructive wildfire in state history.",
     climateLink: "Higher temperatures and prolonged drought conditions dried out vegetation, creating ideal conditions for fires to spread rapidly and burn more intensely.",
     specialFact: "The town of Paradise was completely destroyed within hours, displacing nearly 27,000 residents.",
+    image: "/images/worldmap/Wildfire in California.jpg",
   },
   {
     id: "southasia",
@@ -59,6 +62,7 @@ const hotspots: HotspotData[] = [
     what: "Massive monsoon rainfall caused catastrophic flooding that submerged vast areas of Pakistan, India, and Bangladesh, destroying millions of homes and crops.",
     climateLink: "Warmer air holds significantly more moisture, leading to heavier and more intense rainfall events during monsoon season.",
     specialFact: "Nearly one-third of Pakistan was underwater at the peak of the floods — an area roughly the size of the United Kingdom.",
+    image: "/images/worldmap/Pakistan monsoon flooding.jpg",
   },
   {
     id: "himalaya",
@@ -74,6 +78,7 @@ const hotspots: HotspotData[] = [
     what: "Himalayan glaciers are shrinking at an alarming rate, reducing river flows in summer and threatening long-term freshwater availability across Asia.",
     climateLink: "Rising global temperatures are accelerating ice melt across high-altitude regions, with Himalayan glaciers losing mass up to 65% faster than in the previous decade.",
     specialFact: "Over 2 billion people across Asia depend on Himalayan glaciers for their freshwater supply — they are sometimes called the 'Third Pole'.",
+    image: "/images/worldmap/Melting of Himalayan glaciers.jpg",
   },
   {
     id: "mozambique",
@@ -89,6 +94,7 @@ const hotspots: HotspotData[] = [
     what: "Cyclone Idai made landfall near Beira, Mozambique with devastating winds and rainfall, causing widespread flooding and destroying entire communities.",
     climateLink: "Warmer ocean temperatures provide more energy to tropical storms, increasing their intensity and the amount of rainfall they carry.",
     specialFact: "Over 3 million people were affected. The port city of Beira — home to 500,000 people — was almost completely destroyed.",
+    image: "/images/worldmap/Cyclone idai in Mozambique.jpg",
   },
   {
     id: "europe",
@@ -104,6 +110,7 @@ const hotspots: HotspotData[] = [
     what: "Record-breaking temperatures swept across France, Germany, the Netherlands and the UK, causing droughts, wildfires and serious public health emergencies.",
     climateLink: "Climate change is making heatwaves more frequent, longer-lasting, and more intense across Europe — events that were once rare are becoming routine.",
     specialFact: "Temperatures exceeded 45°C in France — the highest ever recorded in the country. The heatwave caused over 2,500 deaths in France alone.",
+    image: "/images/worldmap/People cooling off in fountains near the Eiffel Tower due to high heat.webp",
   },
   {
     id: "safrica",
@@ -194,7 +201,7 @@ function HotspotModal({
 
       {/* Card */}
       <motion.div
-        className="relative z-10 w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden"
+        className="relative z-10 w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         initial={{ opacity: 0, scale: 0.85, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.85, y: 30 }}
@@ -235,6 +242,19 @@ function HotspotModal({
             📅 {hotspot.year}
           </span>
         </div>
+
+        {/* Image */}
+        {hotspot.image && (
+          <div className="relative w-full h-44 overflow-hidden">
+            <Image
+              src={hotspot.image}
+              alt={hotspot.title}
+              fill
+              className="object-cover"
+              sizes="448px"
+            />
+          </div>
+        )}
 
         {/* Body */}
         <div className="px-6 py-5 space-y-4">
