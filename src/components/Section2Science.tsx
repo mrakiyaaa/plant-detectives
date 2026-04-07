@@ -25,7 +25,8 @@ export default function Section2Science() {
         transition={{ duration: 0.7 }}
         className="text-3xl sm:text-4xl md:text-5xl font-black text-center text-white mb-18 mt-12"
       >
-        Climate Change: The Science Behind a Warming Planet
+        <span className="block">Climate Change</span>
+        <span className="block mt-5">The Science Behind a Warming Planet</span>
       </motion.h2>
 
       {/* What is Climate Change content block */}
@@ -34,7 +35,7 @@ export default function Section2Science() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="w-full max-w-4xl mb-12 flex flex-col md:flex-row items-center gap-8"
+        className="w-full max-w-4xl mb-12 flex flex-col md:flex-row items-center gap-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-xl"
       >
         {/* Character image - left column */}
         <motion.div
@@ -62,12 +63,15 @@ export default function Section2Science() {
           <p className="text-white/80 leading-relaxed mb-4">
             In recent decades, the rate of these changes has significantly accelerated, primarily due to human activities that increase the concentration of greenhouse gases in the atmosphere, disrupting the natural energy balance of the planet.
           </p>
+          <p className="text-white/80 leading-relaxed mb-6">
+            To understand this, let&apos;s explore what greenhouse gases are and their effects.
+          </p>
           <Link
             href="/climate/greenhouse-gases"
-            className="inline-flex items-center text-sky-600 font-semibold hover:underline group"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold rounded-full transition-colors duration-200 shadow-md"
           >
-            To understand this, let&apos;s explore what greenhouse gases are and their effects.
-            <span className="ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            Explore Greenhouse Gases
+            <span>&rarr;</span>
           </Link>
         </div>
       </motion.div>

@@ -7,7 +7,6 @@ import { useState } from "react";
 const climateSubItems = [
   { label: "Greenhouse Gases", href: "/climate/greenhouse-gases" },
   { label: "Human Activities", href: "/climate/human-activities" },
-  { label: "Natural Factors", href: "/climate/natural-factors" },
 ];
 
 const navItems = [

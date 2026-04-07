@@ -17,7 +17,7 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-4xl sm:text-5xl font-black text-slate-800 mb-8"
+        className="text-4xl sm:text-5xl font-black text-white mb-8"
       >
         My Carbon Footprint
       </motion.h1>
@@ -60,7 +60,7 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.6 }}
-        className="text-lg text-slate-600 mb-8"
+        className="text-lg text-white mb-8"
       >
         Find out how your daily habits affect the planet. Are you ready?
       </motion.p>

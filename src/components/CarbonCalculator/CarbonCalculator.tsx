@@ -51,7 +51,17 @@ export default function CarbonCalculator() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20 bg-gradient-to-b from-blue-50/50 via-white to-green-50/30">
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-20"
+      style={{
+        backgroundImage: "url('/images/Eco-friendly footprint in a green world.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+      <div className="relative z-10 w-full flex flex-col items-center">
       <AnimatePresence mode="wait">
         {currentScreen === "welcome" && (
           <WelcomeScreen key="welcome" onStart={handleStart} />
@@ -78,6 +88,7 @@ export default function CarbonCalculator() {
           />
         )}
       </AnimatePresence>
+      </div>
     </section>
   );
 }
