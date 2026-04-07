@@ -16,7 +16,7 @@ export default function ImpactsPageHeader() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-slate-600 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto"
+        className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto"
       >
         Climate change not only affects nature but also the health and well-being of people around the world.
       </motion.p>

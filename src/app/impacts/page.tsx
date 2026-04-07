@@ -7,7 +7,18 @@ import { environmentImpacts, healthImpacts } from "@/constants/impactsData";
 
 export default function ImpactsPage() {
   return (
-    <main className="min-h-screen">
+    <main
+      className="relative min-h-screen"
+      style={{
+        backgroundImage: "url('/images/Serene ocean, forest, and sunrise blend.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/50 pointer-events-none z-0" />
+      <div className="relative z-10">
       <ImpactsPageHeader />
       
       <HorizontalCarousel
@@ -25,6 +36,7 @@ export default function ImpactsPage() {
       />
 
       <FlipFactCard />
+      </div>
     </main>
   );
 }

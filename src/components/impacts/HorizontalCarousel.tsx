@@ -56,10 +56,10 @@ export default function HorizontalCarousel({
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl sm:text-4xl font-black text-slate-800 mb-4">
+        <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
           {title}
         </h2>
-        <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+        <p className="text-white/80 text-lg max-w-2xl mx-auto">
           {subtitle}
         </p>
       </motion.div>

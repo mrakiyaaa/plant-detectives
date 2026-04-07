@@ -16,7 +16,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'The burning of coal, oil, and natural gas for electricity, transport, and industry releases large amounts of carbon dioxide (CO₂). This is the largest source of greenhouse gas emissions, significantly enhancing the Greenhouse Effect and increasing global temperatures.',
     gradientFrom: 'from-red-400',
     gradientTo: 'to-orange-500',
-    image: '/images/human-activities/Children observing pollution in an industrial area.png',
+    image: '/images/human-activities/Industrial workers at coal furnace.png',
   },
   {
     id: 'deforestation',
@@ -34,7 +34,7 @@ export const humanActivities: HumanActivity[] = [
     description: 'Factories and manufacturing processes release greenhouse gases such as CO₂, methane (CH₄), and nitrous oxide (N₂O). Industries like cement, steel, and chemical production are particularly high emitters due to energy-intensive operations.',
     gradientFrom: 'from-gray-400',
     gradientTo: 'to-slate-500',
-    image: '/images/human-activities/Industrial workers at coal furnace.png',
+    image: '/images/human-activities/Children observing pollution in an industrial area.png',
   },
   {
     id: 'agriculture',
