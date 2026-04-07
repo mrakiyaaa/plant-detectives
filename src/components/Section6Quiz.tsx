@@ -116,6 +116,7 @@ export default function Section6Quiz() {
         backgroundRepeat: "no-repeat",
       }}
     >
+      <div className="absolute inset-0 bg-black/50 pointer-events-none z-0" />
       {/* Background particles */}
       {bgParticles.map((p, i) => (
         <motion.div
