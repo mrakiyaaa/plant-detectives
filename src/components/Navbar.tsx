@@ -14,8 +14,7 @@ const navItems = [
   { label: "Impacts", href: "/impacts" },
   { label: "World Map", href: "/world-map" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Quiz", href: "/quiz" },
-  { label: "Calculator", href: "/carbon-calculator" },
+  { label: "Climate Action Hub", href: "/climate-action-hub" },
   { label: "Pledge", href: "/pledge" },
 ];
 
@@ -123,7 +122,10 @@ export default function Navbar() {
 
               {/* Rest of nav items */}
               {navItems.map(({ label, href }) => {
-                const isActive = pathname === href;
+                const isActive =
+                  pathname === href ||
+                  (href === "/climate-action-hub" &&
+                    (pathname === "/quiz" || pathname === "/carbon-calculator"));
                 return (
                   <li key={href}>
                     <Link

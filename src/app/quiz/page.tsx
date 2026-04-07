@@ -1,11 +1,11 @@
 "use client";
 
-import Section6Quiz from "@/components/Section6Quiz";
+import { ClimateQuiz } from "@/components/ClimateQuiz";
 
 export default function QuizPage() {
   return (
     <main>
-      <Section6Quiz />
+      <ClimateQuiz />
     </main>
   );
 }
