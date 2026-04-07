@@ -40,18 +40,8 @@ export default function Section2Science() {
         transition={{ duration: 0.7 }}
         className="text-3xl sm:text-4xl md:text-5xl font-black text-center text-slate-800 mb-4"
       >
-        What Is Climate Change &amp; What Causes It?
+        Climate Change: The Science Behind a Warming Planet
       </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.6 }}
-        className="text-base sm:text-lg text-slate-500 text-center max-w-3xl mb-12"
-      >
-        Climate change is the long-term change in Earth&apos;s climate, including temperature, rainfall, and weather patterns, mainly caused today by human activities that increase greenhouse gas concentrations in the atmosphere.
-      </motion.p>
 
       {/* What is Climate Change content block */}
       <motion.div

@@ -17,7 +17,7 @@ export default function HumanActivityCard({ activity, index }: HumanActivityCard
         duration: 0.6, 
         ease: "easeOut" 
       }}
-      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105"
+      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105 border border-green-200"
     >
       {/* Image Header */}
       <div className="relative h-44 overflow-hidden">
