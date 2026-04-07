@@ -240,6 +240,29 @@ export default function GreenhouseGasesPage() {
           />
         </div>
       </motion.div>
+
+      {/* Navigation Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="mt-16 text-center"
+      >
+        <p className="text-slate-600 mb-4">
+          Now that you understand greenhouse gases, see how human activities are driving climate change.
+        </p>
+        <motion.button
+          onClick={() => router.push('/climate/human-activities')}
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-2xl transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Explore Human Activities
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 12l4-4-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.button>
+      </motion.div>
     </main>
   );
 }

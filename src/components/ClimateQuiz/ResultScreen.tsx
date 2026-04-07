@@ -9,33 +9,6 @@ interface ResultScreenProps {
   isLastLevel: boolean;
 }
 
-const earthVariants = {
-  happy: {
-    rotate: 360,
-    scale: 1.1,
-    transition: {
-      rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-      scale: { duration: 1, repeat: Infinity, repeatType: "reverse" as const }
-    }
-  },
-  okay: {
-    scale: [1, 1.05, 1],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      repeatType: "reverse" as const
-    }
-  },
-  sad: {
-    y: [0, 10, 0],
-    transition: {
-      duration: 2.5,
-      repeat: Infinity,
-      repeatType: "reverse" as const
-    }
-  }
-};
-
 export default function ResultScreen({ 
   result, 
   levelName, 
@@ -61,8 +34,16 @@ export default function ResultScreen({
         
         <motion.div
           className="text-8xl mb-6"
-          variants={earthVariants}
-          animate={result.earthState}
+          animate={{
+            rotate: result.earthState === "happy" ? 360 : 0,
+            scale: result.earthState === "okay" ? [1, 1.05, 1] : 1,
+            y: result.earthState === "sad" ? [0, 10, 0] : 0
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "reverse" as const
+          }}
         >
           {result.emoji}
         </motion.div>
