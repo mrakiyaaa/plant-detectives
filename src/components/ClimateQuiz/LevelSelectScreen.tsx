@@ -20,7 +20,7 @@ export default function LevelSelectScreen({ levels, unlockedLevels, onSelectLeve
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-4xl sm:text-5xl font-black text-slate-800 mb-4"
+        className="text-4xl sm:text-5xl font-black text-white mb-4"
       >
         Climate Change Quiz
       </motion.h1>
@@ -29,7 +29,7 @@ export default function LevelSelectScreen({ levels, unlockedLevels, onSelectLeve
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="text-lg text-slate-600 mb-12"
+        className="text-lg text-white/80 mb-12"
       >
         Test your knowledge and become a Planet Detective! Complete levels in order to unlock the next challenge.
       </motion.p>
