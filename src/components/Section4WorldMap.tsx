@@ -126,6 +126,7 @@ const hotspots: HotspotData[] = [
     what: "Severe and prolonged rainfall triggered catastrophic flooding across Southern Africa, washing away roads, bridges, and entire villages and displacing thousands.",
     climateLink: "Climate change is intensifying rainfall patterns in southern Africa, causing extreme precipitation events that overwhelm drainage systems and cause flash floods.",
     specialFact: "Some areas received an entire year's worth of rainfall in just a few days, an event that would have been nearly impossible without climate change.",
+    image: "/images/worldmap/Deadly floods in Southern Africa.jpg",
   },
 ];
 
