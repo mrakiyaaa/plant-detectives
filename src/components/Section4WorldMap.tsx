@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import {
   ComposableMap,
   Geographies,
@@ -414,6 +415,26 @@ export default function Section4WorldMap() {
           <p className="text-center text-slate-600 text-xs mt-4">
             📍 {hotspots.length} hotspots — click any to explore
           </p>
+        </motion.div>
+
+        {/* Next Step CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-16 max-w-2xl mx-auto text-center bg-white/5 border border-white/10 rounded-3xl p-10"
+        >
+          <p className="text-slate-300 text-lg sm:text-xl leading-relaxed mb-6">
+            Learn how we can minimize this.
+          </p>
+          <Link
+            href="/solutions"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full transition-colors duration-200 shadow-md text-sm sm:text-base"
+          >
+            Take Action
+            <span>&rarr;</span>
+          </Link>
         </motion.div>
       </section>
     </>

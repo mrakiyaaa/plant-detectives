@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { QuizResult } from "@/constants/quizData";
 
@@ -79,10 +80,18 @@ export default function ResultScreen({
         {result.passed ? (
           <>
             {isLastLevel ? (
-              <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4 mb-4">
-                <p className="text-yellow-800 font-medium">
-                  🎉 Congratulations! You've completed all levels and earned the Climate Hero badge!
-                </p>
+              <div className="space-y-4">
+                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4">
+                  <p className="text-yellow-800 font-medium">
+                    🎉 Congratulations! You&apos;ve completed all levels and earned the Climate Hero badge!
+                  </p>
+                </div>
+                <Link
+                  href="/carbon-calculator"
+                  className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-colors shadow-lg hover:shadow-xl"
+                >
+                  🌍 Go to Carbon Calculator
+                </Link>
               </div>
             ) : (
               <button

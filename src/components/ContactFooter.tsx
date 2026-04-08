@@ -1,4 +1,4 @@
-import { FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function ContactFooter() {
   return (
@@ -29,6 +29,11 @@ export default function ContactFooter() {
             <FaPhone size={15} className="text-green-400 group-hover:text-white transition-colors" />
             076 824 9800
           </a>
+
+          <div className="flex items-center gap-2.5 bg-slate-800 px-5 py-3 rounded-2xl text-sm font-medium">
+            <FaMapMarkerAlt size={15} className="text-green-400" />
+            591, Galle Road, Colombo
+          </div>
         </div>
 
         <p className="text-slate-600 text-xs text-center">

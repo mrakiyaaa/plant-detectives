@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 interface CompletedScreenProps {
@@ -110,12 +111,20 @@ export default function CompletedScreen({ onStartOver }: CompletedScreenProps) {
           </p>
         </div>
         
-        <button
-          onClick={onStartOver}
-          className="bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all shadow-lg hover:shadow-xl"
-        >
-          ↺ Start Over
-        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/carbon-calculator"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-colors shadow-lg hover:shadow-xl"
+          >
+            🌍 Go to Carbon Calculator
+          </Link>
+          <button
+            onClick={onStartOver}
+            className="bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all shadow-lg hover:shadow-xl"
+          >
+            ↺ Start Over
+          </button>
+        </div>
       </motion.div>
     </motion.div>
   );

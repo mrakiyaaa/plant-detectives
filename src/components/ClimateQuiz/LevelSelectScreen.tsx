@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { QuizLevel } from "@/constants/quizData";
 
@@ -90,6 +91,23 @@ export default function LevelSelectScreen({ levels, unlockedLevels, onSelectLeve
         <p className="text-blue-800 font-medium">
           🌟 Complete all 3 levels to become a certified Climate Hero!
         </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
+        className="mt-6"
+      >
+        <Link
+          href="/climate-action-hub"
+          className="inline-flex items-center gap-2 text-white/70 hover:text-white font-medium text-sm transition-colors"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Go Back to Climate Action Hub
+        </Link>
       </motion.div>
     </motion.div>
   );

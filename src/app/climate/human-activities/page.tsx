@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { humanActivities } from "@/constants/humanActivities";
@@ -79,6 +80,30 @@ export default function HumanActivitiesPage() {
               index={index}
             />
           ))}
+        </motion.div>
+      </section>
+
+      {/* Next Step CTA */}
+      <section className="px-4 sm:px-8 py-16 max-w-3xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-gradient-to-br from-sky-50 to-blue-100 border border-blue-200 rounded-3xl p-10 shadow-md"
+        >
+          <p className="text-slate-700 text-lg sm:text-xl leading-relaxed mb-6">
+            Human activities are driving major changes in Earth&apos;s climate system.
+            <br />
+            <span className="font-semibold">But what are the real effects on our planet?</span>
+          </p>
+          <Link
+            href="/impacts"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-full transition-colors duration-200 shadow-md text-sm sm:text-base"
+          >
+            Explore the impacts of climate change
+            <span>&rarr;</span>
+          </Link>
         </motion.div>
       </section>
     </main>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { SolutionCards } from "./SolutionCards";
 
@@ -32,6 +33,26 @@ export default function Section5Solutions() {
       </motion.p>
 
       <SolutionCards />
+
+      {/* Next Step CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-16 max-w-2xl mx-auto text-center bg-green-50 border border-green-200 rounded-3xl p-10 shadow-md"
+      >
+        <p className="text-slate-700 text-lg sm:text-xl leading-relaxed mb-6">
+          You&apos;ve learned the solutions — now test your knowledge and measure your impact.
+        </p>
+        <Link
+          href="/climate-action-hub"
+          className="inline-flex items-center gap-2 px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full transition-colors duration-200 shadow-md text-sm sm:text-base"
+        >
+          Go to Climate Action Hub
+          <span>&rarr;</span>
+        </Link>
+      </motion.div>
     </section>
   );
 }

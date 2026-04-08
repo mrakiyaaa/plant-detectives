@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { getResultTier } from "@/constants/calculatorQuestions";
 
@@ -66,6 +67,22 @@ export default function ResultScreen({ score, onRetake }: ResultScreenProps) {
           <p className="text-blue-800 font-medium">
             🌟 Remember: Every small action counts! Check out our Solutions page to learn more ways to help the planet.
           </p>
+        </div>
+
+        <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-6">
+          <p className="text-slate-700 text-lg font-semibold mb-1">
+            Ready to turn your learning into real-world habits?
+          </p>
+          <p className="text-slate-600 text-sm mb-4">
+            Unlock your Climate Badge.
+          </p>
+          <Link
+            href="/climate-action-hub"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full transition-colors duration-200 shadow-md text-sm"
+          >
+            Go to Climate Action Hub
+            <span>&rarr;</span>
+          </Link>
         </div>
 
         <button
