@@ -77,11 +77,10 @@ export default function ResultScreen({ score, onRetake }: ResultScreenProps) {
             Unlock your Climate Badge.
           </p>
           <Link
-            href="/climate-action-hub"
+            href="/pledge"
             className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full transition-colors duration-200 shadow-md text-sm"
           >
-            Go to Climate Action Hub
-            <span>&rarr;</span>
+            🏅 Unlock Climate Badges
           </Link>
         </div>
 

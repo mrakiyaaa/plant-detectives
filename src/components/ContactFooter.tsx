@@ -1,6 +1,15 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function ContactFooter() {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-slate-900 text-white py-10 px-4">
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
@@ -36,8 +45,8 @@ export default function ContactFooter() {
           </div>
         </div>
 
-        <p className="text-slate-600 text-xs text-center">
-          © {new Date().getFullYear()} Planet Detectives · Built with care for our planet 🌍
+        <p className="text-slate-600 text-xs text-center" suppressHydrationWarning>
+          © {year ?? ""} Planet Detectives · Built with care for our planet 🌍
         </p>
       </div>
     </footer>
