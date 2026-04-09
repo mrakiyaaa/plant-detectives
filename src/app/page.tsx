@@ -42,7 +42,7 @@ export default function Home() {
     <main
       className="relative h-screen w-full flex items-center justify-center overflow-hidden -mt-14"
       style={{
-        backgroundImage: "url('/images/home-bg.png')",
+        backgroundImage: "url('/images/Planet detectives_ investigating climate change.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

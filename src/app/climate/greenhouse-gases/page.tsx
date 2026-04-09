@@ -84,10 +84,21 @@ export default function GreenhouseGasesPage() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen px-4 sm:px-8 py-12 max-w-3xl mx-auto">
+    <main
+      className="relative min-h-screen px-4 sm:px-8 py-12"
+      style={{
+        backgroundImage: "url('/images/ece7dea8-d985-42ff-9bf9-9f446714df3c.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      <div className="relative z-10 max-w-3xl mx-auto">
       <button
         onClick={() => router.back()}
-        className="flex items-center gap-2 text-slate-500 hover:text-slate-800 font-medium text-sm mb-10 transition-colors cursor-pointer"
+        className="flex items-center gap-2 text-slate-300 hover:text-white font-medium text-sm mb-10 transition-colors cursor-pointer"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -100,7 +111,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl sm:text-4xl font-black text-slate-800 mb-6"
+        className="text-3xl sm:text-4xl font-black text-white mb-6"
       >
         Greenhouse Gases and Effect
       </motion.h1>
@@ -109,7 +120,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-8 text-base sm:text-lg"
+        className="text-white/90 leading-relaxed mb-8 text-base sm:text-lg"
       >
         Greenhouse gases are atmospheric gases — some occurring naturally, like water vapour, carbon dioxide (CO₂), methane (CH₄), and nitrous oxide (N₂O) — that possess the ability to absorb and re-emit infrared radiation, thereby trapping heat within the Earth&apos;s atmosphere. This heat-trapping mechanism is a fundamental component of the Earth&apos;s climate system, as it helps regulate and maintain the planet&apos;s surface temperature at levels suitable for life.
       </motion.p>
@@ -134,7 +145,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="text-2xl sm:text-3xl font-black text-slate-800 mb-4"
+        className="text-2xl sm:text-3xl font-black text-white mb-4"
       >
         The Greenhouse Effect
       </motion.h2>
@@ -143,7 +154,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-8 text-base sm:text-lg"
+        className="text-white/90 leading-relaxed mb-8 text-base sm:text-lg"
       >
         The greenhouse effect is a natural physical process in which certain gases in the Earth&apos;s atmosphere absorb outgoing infrared radiation from the Earth&apos;s surface and re-radiate it back, preventing excessive heat loss into space. This process maintains the Earth&apos;s energy balance and keeps the global temperature within a habitable range.
       </motion.p>
@@ -168,7 +179,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.6 }}
-        className="text-2xl sm:text-3xl font-black text-slate-800 mb-4"
+        className="text-2xl sm:text-3xl font-black text-white mb-4"
       >
         Reinforced Greenhouse Effect
       </motion.h2>
@@ -177,7 +188,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-4 text-base sm:text-lg"
+        className="text-white/90 leading-relaxed mb-4 text-base sm:text-lg"
       >
         The greenhouse effect becomes a problem when it is intensified by human activities.
       </motion.p>
@@ -186,7 +197,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-12 text-base sm:text-lg"
+        className="text-white/90 leading-relaxed mb-12 text-base sm:text-lg"
       >
         In its natural state, the greenhouse effect maintains a stable climate. However, human activities have increased greenhouse gas concentrations, strengthening this effect and leading to global warming.
       </motion.p>
@@ -198,10 +209,10 @@ export default function GreenhouseGasesPage() {
         transition={{ delay: 1.0, duration: 0.6 }}
         className="w-full max-w-xl mx-auto mb-16"
       >
-        <h3 className="text-lg font-bold text-slate-700 mb-2 text-center">
+        <h3 className="text-lg font-bold text-white mb-2 text-center">
           Interactive Climate Slider
         </h3>
-        <p className="text-sm text-slate-500 text-center mb-4 font-medium">
+        <p className="text-sm text-white/70 text-center mb-4 font-medium">
           Drag to see what happens when greenhouse gases increase
         </p>
         <SkyScene value={sliderValue} />
@@ -227,7 +238,7 @@ export default function GreenhouseGasesPage() {
         transition={{ delay: 1.1, duration: 0.6 }}
         className="mb-12"
       >
-        <p className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg">
+        <p className="text-white/90 leading-relaxed mb-6 text-base sm:text-lg">
           The following video provides a simple visual explanation of how the greenhouse effect works and how it contributes to climate change.
         </p>
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
@@ -248,7 +259,7 @@ export default function GreenhouseGasesPage() {
         transition={{ delay: 1.2, duration: 0.6 }}
         className="mt-16 text-center"
       >
-        <p className="text-slate-600 mb-4">
+        <p className="text-white/90 mb-4">
           Now that you understand greenhouse gases, see how human activities are driving climate change.
         </p>
         <motion.button
@@ -263,6 +274,7 @@ export default function GreenhouseGasesPage() {
           </svg>
         </motion.button>
       </motion.div>
+      </div>
     </main>
   );
 }

@@ -110,10 +110,21 @@ export default function GreenhouseGasesPage() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen px-4 sm:px-8 py-12 max-w-3xl mx-auto">
+    <main
+      className="relative min-h-screen px-4 sm:px-8 py-12"
+      style={{
+        backgroundImage: "url('/images/ece7dea8-d985-42ff-9bf9-9f446714df3c.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      <div className="relative z-10 max-w-3xl mx-auto">
       <button
         onClick={() => router.back()}
-        className="flex items-center gap-2 text-slate-500 hover:text-slate-800 font-medium text-sm mb-10 transition-colors cursor-pointer"
+        className="flex items-center gap-2 text-slate-300 hover:text-white font-medium text-sm mb-10 transition-colors cursor-pointer"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -125,7 +136,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl sm:text-4xl font-black text-slate-800 mb-4"
+        className="text-3xl sm:text-4xl font-black text-white mb-4"
       >
         What are Greenhouse Gases?
       </motion.h1>
@@ -134,7 +145,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-10 text-base sm:text-lg"
+        className="text-white/90 leading-relaxed mb-10 text-base sm:text-lg"
       >
         Greenhouse gases are gases in Earth&apos;s atmosphere that absorb and
         re-emit infrared radiation, keeping the planet warm enough to support
@@ -173,7 +184,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="text-2xl sm:text-3xl font-black text-slate-800 mb-4"
+        className="text-2xl sm:text-3xl font-black text-white mb-4"
       >
         How They Affect Climate Change
       </motion.h2>
@@ -182,7 +193,7 @@ export default function GreenhouseGasesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        className="text-slate-600 leading-relaxed mb-10 text-base sm:text-lg"
+        className="text-white/90 leading-relaxed mb-10 text-base sm:text-lg"
       >
         When sunlight reaches Earth, the surface absorbs it and radiates heat
         upward. Greenhouse gases in the upper atmosphere capture this outgoing
@@ -198,10 +209,10 @@ export default function GreenhouseGasesPage() {
         transition={{ delay: 0.6, duration: 0.6 }}
         className="w-full max-w-xl mx-auto mb-16"
       >
-        <h3 className="text-lg font-bold text-slate-700 mb-2 text-center">
+        <h3 className="text-lg font-bold text-white mb-2 text-center">
           Interactive Climate Slider
         </h3>
-        <p className="text-sm text-slate-400 text-center mb-4">
+        <p className="text-sm text-white/70 text-center mb-4">
           Drag to see what happens when greenhouse gases increase
         </p>
         <SkyScene value={sliderValue} />
@@ -219,6 +230,7 @@ export default function GreenhouseGasesPage() {
           <span className="text-sm text-red-600 font-semibold">High</span>
         </div>
       </motion.div>
+      </div>
     </main>
   );
 }
