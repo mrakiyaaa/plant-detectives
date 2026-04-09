@@ -61,7 +61,7 @@ export default function Home() {
         {/* Tagline */}
         <motion.p
           variants={fadeUp}
-          className="mb-6 text-sm sm:text-base md:text-lg text-white/70 tracking-[0.3em] uppercase font-medium"
+          className="mb-6 text-lg sm:text-xl md:text-2xl text-white/70 tracking-[0.3em] uppercase font-black"
         >
           Explore &middot; Learn &middot; Act
         </motion.p>
@@ -69,11 +69,25 @@ export default function Home() {
         {/* Main heading */}
         <motion.h1
           variants={fadeUp}
-          className="text-6xl sm:text-7xl md:text-8xl font-black text-white leading-tight"
-          style={{ textShadow: "0 4px 24px rgba(0,0,0,0.35)" }}
+          className="text-7xl sm:text-8xl md:text-9xl font-black leading-tight"
+          style={{
+            textShadow: "0 4px 24px rgba(0,0,0,0.35)",
+            background: "linear-gradient(90deg, #ffffff, #4ade80, #ffffff, #4ade80, #ffffff)",
+            backgroundSize: "300% auto",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            animation: "shimmer 10s linear infinite",
+          }}
         >
           Planet Detectives
         </motion.h1>
+        <style>{`
+          @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
+          }
+        `}</style>
 
         {/* Subheading */}
         <motion.p
