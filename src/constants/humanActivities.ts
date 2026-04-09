@@ -81,4 +81,13 @@ export const humanActivities: HumanActivity[] = [
     gradientTo: 'to-pink-500',
     image: '/images/human-activities/Urbanization through land, energy, and industry.png',
   },
+  {
+    id: 'air-conditioning',
+    icon: '❄️',
+    title: 'Air Conditioning',
+    description: 'Air conditioning keeps us comfortable but contributes to climate change by using large amounts of electricity, often generated from fossil fuels, releasing carbon dioxide. It also uses refrigerant gases (HFCs) that can trap heat if leaked. Rising temperatures increase usage, creating a warming cycle.',
+    gradientFrom: 'from-sky-400',
+    gradientTo: 'to-blue-500',
+    image: '/images/AC person using.png',
+  },
 ];

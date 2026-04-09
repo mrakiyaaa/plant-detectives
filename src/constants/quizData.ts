@@ -2,7 +2,9 @@ export interface QuizQuestion {
   id: number;
   question: string;
   options: string[];
-  correctAnswerIndex: number;
+  correctAnswerIndex: number;          // single-select
+  correctAnswerIndices?: number[];      // multi-select
+  isMultiSelect?: boolean;
 }
 
 export interface QuizLevel {
@@ -25,31 +27,19 @@ export const quizLevels: QuizLevel[] = [
       {
         id: 1,
         question: "Climate change means:",
-        options: [
-          "Change in weather over time",
-          "Only rain changes", 
-          "Earth stops rotating"
-        ],
+        options: ["Change in weather over time", "Only rain changes", "Earth stops rotating"],
         correctAnswerIndex: 0,
       },
       {
         id: 2,
         question: "The Earth is getting warmer mainly because of:",
-        options: [
-          "Greenhouse gases",
-          "Moon movement",
-          "Earth's core cooling"
-        ],
+        options: ["Greenhouse gases", "Moon movement", "Earth's core cooling"],
         correctAnswerIndex: 0,
       },
       {
         id: 3,
         question: "Which gas is most linked to global warming?",
-        options: [
-          "Oxygen",
-          "Carbon dioxide",
-          "Helium"
-        ],
+        options: ["Oxygen", "Carbon dioxide", "Helium"],
         correctAnswerIndex: 1,
       },
       {
@@ -61,21 +51,13 @@ export const quizLevels: QuizLevel[] = [
       {
         id: 5,
         question: "Which activity produces CO₂?",
-        options: [
-          "Burning fuel",
-          "Planting trees",
-          "Drinking water"
-        ],
+        options: ["Burning fuel", "Planting trees", "Drinking water"],
         correctAnswerIndex: 0,
       },
       {
         id: 6,
         question: "Climate change can cause:",
-        options: [
-          "Stronger storms",
-          "Only sunny days",
-          "No changes"
-        ],
+        options: ["Stronger storms", "Only sunny days", "No changes"],
         correctAnswerIndex: 0,
       },
       {
@@ -87,11 +69,7 @@ export const quizLevels: QuizLevel[] = [
       {
         id: 8,
         question: "Fossil fuels include:",
-        options: [
-          "Coal, oil, gas",
-          "Water, air",
-          "Fruits and plants"
-        ],
+        options: ["Coal, oil, gas", "Water, air", "Fruits and plants"],
         correctAnswerIndex: 0,
       },
     ],
@@ -105,79 +83,82 @@ export const quizLevels: QuizLevel[] = [
     questions: [
       {
         id: 1,
-        question: "Greenhouse gases trap:",
-        options: [
-          "Heat in the atmosphere",
-          "Oxygen",
-          "Water"
-        ],
-        correctAnswerIndex: 0,
+        question: "What do greenhouse gases trap?",
+        options: ["Cold air", "Oxygen", "Heat in the atmosphere", "Water"],
+        correctAnswerIndex: 2,
       },
       {
         id: 2,
-        question: "Which is a greenhouse gas?",
+        question: "Which action or actions help reduce climate change?",
         options: [
-          "Carbon dioxide",
-          "Nitrogen only",
-          "Sand particles"
+          "Saving electricity",
+          "Using public transport",
+          "Burning more coal",
+          "Cutting down forests",
         ],
         correctAnswerIndex: 0,
+        correctAnswerIndices: [0, 1],
+        isMultiSelect: true,
       },
       {
         id: 3,
-        question: "Deforestation increases:",
-        options: [
-          "CO₂ levels",
-          "Oxygen instantly",
-          "Rainbows"
-        ],
-        correctAnswerIndex: 0,
+        question: "Climate change only affects temperature, not weather patterns.",
+        options: ["True", "False"],
+        correctAnswerIndex: 1,
       },
       {
         id: 4,
-        question: "Using public transport helps reduce:",
+        question: "Which are the impacts of climate change?",
         options: [
-          "Pollution",
-          "Gravity",
-          "Earth rotation"
+          "Melting glaciers and ocean acidification",
+          "Sea level rise and spread of infectious diseases",
+          "Increased oxygen levels and improved air quality",
+          "Heat related illnesses and respiratory problems",
         ],
         correctAnswerIndex: 0,
+        correctAnswerIndices: [0, 1, 3],
+        isMultiSelect: true,
       },
       {
         id: 5,
-        question: "Climate change can lead to:",
+        question: "How does air conditioning affect climate change?",
         options: [
-          "Sea level rise",
-          "Only snow everywhere",
-          "No weather changes"
+          "It reduces global warming",
+          "It cleans the air completely",
+          "It uses energy and increases emissions",
+          "It has no effect",
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
       },
       {
         id: 6,
-        question: "Renewable energy includes:",
+        question: "Fossil fuels are non-renewable because:",
         options: [
-          "Solar power",
-          "Coal",
-          "Diesel"
+          "They are artificial",
+          "They grow fast",
+          "They take millions of years to form",
+          "They are made from sunlight",
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
       },
       {
         id: 7,
-        question: "True or False: Plastic waste affects climate change indirectly.",
+        question: "Methane is a stronger greenhouse gas than carbon dioxide.",
         options: ["True", "False"],
         correctAnswerIndex: 0,
       },
       {
         id: 8,
-        question: "Cutting electricity use helps reduce:",
+        question: "Cutting electricity use helps reduce?",
         options: [
           "Carbon footprint",
           "Oxygen levels",
-          "Earth's size"
+          "Greenhouse gas emissions",
+          "Earth's size",
         ],
         correctAnswerIndex: 0,
+        correctAnswerIndices: [0, 2],
+        isMultiSelect: true,
       },
     ],
   },
@@ -190,83 +171,107 @@ export const quizLevels: QuizLevel[] = [
     questions: [
       {
         id: 1,
-        question: "The enhanced greenhouse effect is caused by:",
+        question:
+          "🧠 Carbon Footprint — A large city increases its electricity demand rapidly due to rising population and industrial growth. Most of its electricity is still produced by burning coal in thermal power plants. Which of the following best explains the long-term environmental impact of this situation?",
         options: [
-          "Excess greenhouse gases",
-          "Earth's orbit change only",
-          "Ocean color"
+          "The city's carbon footprint will decrease because more electricity is being produced",
+          "The city's carbon footprint will increase due to higher carbon dioxide emissions",
+          "The city will have no environmental impact because electricity is essential",
+          "The city will automatically shift to renewable energy sources",
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
       },
       {
         id: 2,
-        question: "Which sector produces the most CO₂ globally?",
+        question:
+          "🌡️ Advanced Climate Impact — Due to rising global temperatures, scientists observe several changes in polar regions. Which of the following are scientifically accurate consequences of Arctic ice melting?",
         options: [
-          "Energy production",
-          "Libraries",
-          "Schools"
+          "Sea levels rise due to increased water volume in oceans",
+          "Global temperatures immediately decrease due to ice loss",
+          "Loss of habitat for polar animals such as polar bears",
+          "Increase in Earth's reflectivity (albedo effect improves cooling)",
         ],
         correctAnswerIndex: 0,
+        correctAnswerIndices: [0, 2],
+        isMultiSelect: true,
       },
       {
         id: 3,
-        question: "Methane is mainly produced by:",
+        question:
+          "🌍 Carbon Footprint Reasoning — A person switches from driving a petrol car alone to using a fully occupied public bus every day. How does this change affect their individual carbon footprint and why?",
         options: [
-          "Livestock farming",
-          "Rocks",
-          "Wind"
+          "It increases because buses use more fuel overall",
+          "It decreases because emissions are shared among many passengers",
+          "It stays the same because travel distance is unchanged",
+          "It becomes zero because public transport is emission-free",
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
       },
       {
         id: 4,
-        question: "Carbon sinks include:",
+        question:
+          "🔥 Greenhouse Gas Science — Which of the following correctly describe why methane is considered a more powerful greenhouse gas than carbon dioxide in the short term?",
         options: [
-          "Forests and oceans",
-          "Roads",
-          "Buildings"
+          "It traps more heat per molecule than carbon dioxide",
+          "It has a stronger warming effect over a short period",
+          "It is completely harmless to the atmosphere",
+          "It absorbs no infrared radiation",
         ],
         correctAnswerIndex: 0,
+        correctAnswerIndices: [0, 1],
+        isMultiSelect: true,
       },
       {
         id: 5,
-        question: "Climate feedback loops can:",
+        question:
+          "🌊 Advanced Climate Impact — Scientists predict that continued global warming will disrupt ocean currents such as the thermohaline circulation. What is the most likely consequence of this disruption?",
         options: [
-          "Increase warming",
-          "Stop weather",
-          "Freeze Earth instantly"
+          "Stable global weather patterns",
+          "Changes in regional climate and extreme weather events",
+          "Permanent cooling of all oceans",
+          "No change in climate systems",
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
       },
       {
         id: 6,
-        question: "Which gas has the highest warming potential per molecule?",
+        question:
+          "🌿 Carbon Sink Understanding — Forests are known as carbon sinks. Which of the following statements correctly explain their role in regulating climate?",
         options: [
-          "Methane",
-          "Oxygen",
-          "Nitrogen"
+          "They absorb carbon dioxide from the atmosphere",
+          "They release large amounts of oxygen during photosynthesis",
+          "They increase atmospheric carbon dioxide levels",
+          "They store carbon in biomass and soil",
         ],
         correctAnswerIndex: 0,
+        correctAnswerIndices: [0, 3],
+        isMultiSelect: true,
       },
       {
         id: 7,
-        question: "Fossil fuels are non-renewable because:",
+        question:
+          "🌡️ Scientific Reasoning — A region experiences increased use of air conditioning due to rising temperatures. Scientists say this creates a feedback loop. What does this mean in this context?",
         options: [
-          "They take millions of years to form",
-          "They grow fast",
-          "They are artificial"
+          "Cooling reduces energy use over time",
+          "Increased cooling demand leads to more emissions, which increases warming further",
+          "Air conditioning removes greenhouse gases from the atmosphere",
+          "Temperature stabilizes naturally without human impact",
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
       },
       {
         id: 8,
-        question: "A carbon footprint measures:",
+        question:
+          "⚡ Climate Mitigation Logic — A country wants to reduce its national carbon footprint. Which strategy or strategies would scientifically contribute to this goal?",
         options: [
-          "Total greenhouse gas emissions",
-          "Weight of Earth",
-          "Number of trees only"
+          "Increasing renewable energy use like wind and solar",
+          "Expanding coal-based power plants",
+          "Improving energy efficiency in buildings",
+          "Increasing private vehicle use",
         ],
         correctAnswerIndex: 0,
+        correctAnswerIndices: [0, 2],
+        isMultiSelect: true,
       },
     ],
   },
@@ -282,8 +287,6 @@ export interface QuizResult {
 }
 
 export const getQuizResult = (score: number, totalQuestions: number = 8): QuizResult => {
-  const percentage = (score / totalQuestions) * 100;
-  
   if (score === totalQuestions) {
     return {
       score,
@@ -297,7 +300,7 @@ export const getQuizResult = (score: number, totalQuestions: number = 8): QuizRe
     return {
       score,
       totalQuestions,
-      earthState: "okay", 
+      earthState: "okay",
       message: "You did well! 🌍 You understand most ideas, but a little more practice will help you improve even more.",
       emoji: "🌍",
       passed: true,

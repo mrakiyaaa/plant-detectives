@@ -14,19 +14,24 @@ export default function ClimateQuiz() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("level-select");
   const [currentLevelId, setCurrentLevelId] = useState<number>(1);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<number[]>([]);
-  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(null);
-  const [unlockedLevels, setUnlockedLevels] = useState<number[]>([1]); // Level 1 starts unlocked
+  const [userAnswers, setUserAnswers] = useState<number[][]>([]);
+  const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
+  const [unlockedLevels, setUnlockedLevels] = useState<number[]>([1]);
   const [completedAllLevels, setCompletedAllLevels] = useState(false);
 
-  const currentLevel = quizLevels.find(level => level.id === currentLevelId)!;
+  const currentLevel = quizLevels.find((level) => level.id === currentLevelId)!;
   const currentQuestion = currentLevel.questions[currentQuestionIndex];
   const totalQuestions = currentLevel.questions.length;
 
   const calculateScore = () => {
-    return userAnswers.reduce((score, answerIndex, questionIndex) => {
-      const correct = currentLevel.questions[questionIndex].correctAnswerIndex;
-      return answerIndex === correct ? score + 1 : score;
+    return userAnswers.reduce((score, selected, qi) => {
+      const q = currentLevel.questions[qi];
+      if (q.isMultiSelect && q.correctAnswerIndices) {
+        const a = [...selected].sort().join(",");
+        const b = [...q.correctAnswerIndices].sort().join(",");
+        return a === b ? score + 1 : score;
+      }
+      return selected[0] === q.correctAnswerIndex ? score + 1 : score;
     }, 0);
   };
 
@@ -34,38 +39,49 @@ export default function ClimateQuiz() {
     setCurrentLevelId(levelId);
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
-    setSelectedAnswerIndex(null);
+    setSelectedIndices([]);
     setCurrentScreen("question");
   };
 
-  const handleSelectAnswer = (answerIndex: number) => {
-    setSelectedAnswerIndex(answerIndex);
+  const handleSelectAnswer = (index: number) => {
+    if (currentQuestion.isMultiSelect) {
+      // Toggle the tapped option
+      setSelectedIndices((prev) =>
+        prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      );
+    } else {
+      // Single-select: toggle off if same, replace if different
+      setSelectedIndices((prev) => (prev[0] === index ? [] : [index]));
+    }
   };
 
   const handleNext = () => {
-    if (selectedAnswerIndex === null) return;
-
-    const newAnswers = [...userAnswers, selectedAnswerIndex];
+    if (selectedIndices.length === 0) return;
+    const newAnswers = [...userAnswers, selectedIndices];
     setUserAnswers(newAnswers);
 
     if (currentQuestionIndex < totalQuestions - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswerIndex(null);
+      setSelectedIndices([]);
     } else {
-      // Quiz completed - show results
       setCurrentScreen("result");
     }
   };
 
+  const handleBack = () => {
+    if (currentQuestionIndex === 0) return;
+    const prevIndex = currentQuestionIndex - 1;
+    const prevAnswer = userAnswers[prevIndex] ?? [];
+    setUserAnswers((prev) => prev.slice(0, prevIndex));
+    setCurrentQuestionIndex(prevIndex);
+    setSelectedIndices(prevAnswer);
+  };
+
   const handleNextLevel = () => {
     const nextLevelId = currentLevelId + 1;
-    
-    // Unlock next level
     if (!unlockedLevels.includes(nextLevelId)) {
       setUnlockedLevels([...unlockedLevels, nextLevelId]);
     }
-    
-    // Check if this was the last level
     if (currentLevelId === 3) {
       setCompletedAllLevels(true);
       setCurrentScreen("completed");
@@ -77,7 +93,7 @@ export default function ClimateQuiz() {
   const handleRetryLevel = () => {
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
-    setSelectedAnswerIndex(null);
+    setSelectedIndices([]);
     setCurrentScreen("question");
   };
 
@@ -86,7 +102,7 @@ export default function ClimateQuiz() {
     setCurrentLevelId(1);
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
-    setSelectedAnswerIndex(null);
+    setSelectedIndices([]);
     setUnlockedLevels([1]);
     setCompletedAllLevels(false);
   };
@@ -95,7 +111,7 @@ export default function ClimateQuiz() {
     setCurrentScreen("level-select");
     setCurrentQuestionIndex(0);
     setUserAnswers([]);
-    setSelectedAnswerIndex(null);
+    setSelectedIndices([]);
   };
 
   const score = calculateScore();
@@ -113,48 +129,47 @@ export default function ClimateQuiz() {
     >
       <div className="absolute inset-0 bg-black/50 pointer-events-none z-0" />
       <div className="relative z-10 w-full flex flex-col items-center">
-      <AnimatePresence mode="wait">
-        {currentScreen === "level-select" && (
-          <LevelSelectScreen
-            key="level-select"
-            levels={quizLevels}
-            unlockedLevels={unlockedLevels}
-            onSelectLevel={handleSelectLevel}
-          />
-        )}
-        
-        {currentScreen === "question" && (
-          <QuestionScreen
-            key={`question-${currentLevelId}-${currentQuestionIndex}`}
-            question={currentQuestion}
-            currentQuestionIndex={currentQuestionIndex}
-            totalQuestions={totalQuestions}
-            selectedAnswerIndex={selectedAnswerIndex}
-            onSelectAnswer={handleSelectAnswer}
-            onNext={handleNext}
-            isLastQuestion={currentQuestionIndex === totalQuestions - 1}
-            levelName={`${currentLevel.name} - ${currentLevel.difficulty}`}
-          />
-        )}
-        
-        {currentScreen === "result" && (
-          <ResultScreen
-            key={`result-${currentLevelId}`}
-            result={quizResult}
-            levelName={`${currentLevel.name} - ${currentLevel.difficulty}`}
-            onNextLevel={quizResult.passed ? handleNextLevel : undefined}
-            onRetryLevel={handleRetryLevel}
-            isLastLevel={currentLevelId === 3}
-          />
-        )}
-        
-        {currentScreen === "completed" && (
-          <CompletedScreen
-            key="completed"
-            onStartOver={handleStartOver}
-          />
-        )}
-      </AnimatePresence>
+        <AnimatePresence mode="wait">
+          {currentScreen === "level-select" && (
+            <LevelSelectScreen
+              key="level-select"
+              levels={quizLevels}
+              unlockedLevels={unlockedLevels}
+              onSelectLevel={handleSelectLevel}
+            />
+          )}
+
+          {currentScreen === "question" && (
+            <QuestionScreen
+              key={`question-${currentLevelId}-${currentQuestionIndex}`}
+              question={currentQuestion}
+              currentQuestionIndex={currentQuestionIndex}
+              totalQuestions={totalQuestions}
+              selectedIndices={selectedIndices}
+              onSelectAnswer={handleSelectAnswer}
+              onNext={handleNext}
+              onBack={handleBack}
+              isLastQuestion={currentQuestionIndex === totalQuestions - 1}
+              isFirstQuestion={currentQuestionIndex === 0}
+              levelName={`${currentLevel.name} - ${currentLevel.difficulty}`}
+            />
+          )}
+
+          {currentScreen === "result" && (
+            <ResultScreen
+              key={`result-${currentLevelId}`}
+              result={quizResult}
+              levelName={`${currentLevel.name} - ${currentLevel.difficulty}`}
+              onNextLevel={quizResult.passed ? handleNextLevel : undefined}
+              onRetryLevel={handleRetryLevel}
+              isLastLevel={currentLevelId === 3}
+            />
+          )}
+
+          {currentScreen === "completed" && (
+            <CompletedScreen key="completed" onStartOver={handleStartOver} />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

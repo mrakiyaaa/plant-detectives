@@ -26,7 +26,7 @@ export default function CarbonCalculator() {
   };
 
   const handleSelectOption = (option: QuestionOption) => {
-    setSelectedOption(option);
+    setSelectedOption((prev) => (prev?.text === option.text ? null : option));
   };
 
   const handleNext = () => {

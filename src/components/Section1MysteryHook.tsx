@@ -61,8 +61,18 @@ export default function Section1MysteryHook() {
   return (
     <section
       id="section-0"
-      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-16 bg-gradient-to-b from-sky-50 via-white to-sky-50"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 py-16"
+      style={{
+        backgroundImage: "url('/images/7cb1522d-2a62-44ae-9387-5c75335ad0e6.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+      }}
     >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      <div className="relative z-10 flex flex-col items-center w-full">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -76,7 +86,7 @@ export default function Section1MysteryHook() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="text-4xl sm:text-5xl md:text-6xl font-black text-center text-slate-800 mb-4 leading-tight"
+        className="text-4xl sm:text-5xl md:text-6xl font-black text-center text-white mb-4 leading-tight"
       >
         Something Is Changing <br className="hidden sm:block" />
         Our Planet.
@@ -86,7 +96,7 @@ export default function Section1MysteryHook() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
-        className="text-lg sm:text-xl text-slate-500 text-center mb-10 max-w-lg"
+        className="text-lg sm:text-xl text-slate-300 text-center mb-10 max-w-lg"
       >
         What do you think is causing these changes?
       </motion.p>
@@ -152,6 +162,7 @@ export default function Section1MysteryHook() {
           Let&apos;s Explore the Science &rarr;
         </motion.button>
       )}
+      </div>
     </section>
   );
 }
