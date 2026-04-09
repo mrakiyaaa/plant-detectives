@@ -17,12 +17,23 @@ export default function HumanActivitiesPage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main
+      className="relative min-h-screen"
+      style={{
+        backgroundImage: "url('/images/human activities.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className="absolute inset-0 bg-black/60 pointer-events-none z-0" />
+      <div className="relative z-10">
       {/* Back button */}
       <div className="px-4 sm:px-8 pt-12 max-w-6xl mx-auto">
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-slate-500 hover:text-slate-800 font-medium text-sm mb-10 transition-colors cursor-pointer"
+          className="flex items-center gap-2 text-slate-300 hover:text-white font-medium text-sm mb-10 transition-colors cursor-pointer"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -37,10 +48,10 @@ export default function HumanActivitiesPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl font-black text-slate-800 mb-6"
+          className="text-4xl sm:text-5xl font-black text-white mb-6"
         >
           Human Activities Causing{" "}
-          <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
             Climate Change
           </span>
         </motion.h1>
@@ -49,7 +60,7 @@ export default function HumanActivitiesPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-slate-600 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto"
+          className="text-white/90 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto"
         >
           Understanding our impact on the planet to build a better future.
         </motion.p>
@@ -59,7 +70,7 @@ export default function HumanActivitiesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
           onClick={scrollToCards}
-          className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-semibold transition-colors"
+          className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-semibold transition-colors"
         >
           Explore the Causes 👇
         </motion.button>
@@ -90,22 +101,23 @@ export default function HumanActivitiesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-sky-50 to-blue-100 border border-blue-200 rounded-3xl p-10 shadow-md"
+          className="bg-white/10 border border-white/20 rounded-3xl p-10 shadow-md backdrop-blur-sm"
         >
-          <p className="text-slate-700 text-lg sm:text-xl leading-relaxed mb-6">
+          <p className="text-white text-lg sm:text-xl leading-relaxed mb-6">
             Human activities are driving major changes in Earth&apos;s climate system.
             <br />
             <span className="font-semibold">But what are the real effects on our planet?</span>
           </p>
           <Link
             href="/impacts"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-full transition-colors duration-200 shadow-md text-sm sm:text-base"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full transition-colors duration-200 shadow-md text-sm sm:text-base"
           >
             Explore the impacts of climate change
             <span>&rarr;</span>
           </Link>
         </motion.div>
       </section>
+      </div>
     </main>
   );
 }
