@@ -63,11 +63,22 @@ export default function ContactPage() {
   const allFilled = form.name && form.email && form.subject && form.message;
 
   return (
-    <main className="min-h-screen px-4 sm:px-8 py-12 bg-gradient-to-b from-green-50 via-white to-emerald-50/30">
-      <div className="max-w-2xl mx-auto">
+    <main
+      className="relative min-h-screen px-4 sm:px-8 py-12"
+      style={{
+        backgroundImage: "url('/images/Green planet in caring hands.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+      <div className="relative z-10 max-w-2xl mx-auto">
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-slate-500 hover:text-slate-800 font-medium text-sm mb-10 transition-colors cursor-pointer"
+          className="flex items-center gap-2 text-slate-300 hover:text-white font-medium text-sm mb-10 transition-colors cursor-pointer"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -80,10 +91,10 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-800 mb-2">
+          <h1 className="text-3xl sm:text-4xl font-black text-white mb-2">
             Contact Us
           </h1>
-          <p className="text-slate-500 mb-10 text-base">
+          <p className="text-slate-300 mb-10 text-base">
             Have a question, suggestion, or just want to say hello? We would love to hear from you.
           </p>
         </motion.div>
@@ -227,10 +238,10 @@ export default function ContactPage() {
           className="mt-10"
         >
           <div className="mb-4">
-            <h2 className="text-2xl font-black text-slate-800 mb-1 flex items-center gap-2">
+            <h2 className="text-2xl font-black text-white mb-1 flex items-center gap-2">
               <FaCommentDots size={20} color="#22c55e" /> Leave a Feedback
             </h2>
-            <p className="text-slate-500 text-sm">Share your thoughts about Planet Detectives!</p>
+            <p className="text-slate-300 text-sm">Share your thoughts about Planet Detectives!</p>
           </div>
 
           <form
@@ -304,7 +315,7 @@ export default function ContactPage() {
               transition={{ delay: 0.2 }}
               className="mt-8"
             >
-              <h3 className="text-lg font-black text-slate-800 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-black text-white mb-4 flex items-center gap-2">
                 <FaCommentDots size={16} color="#22c55e" />
                 What others are saying
                 <span className="text-sm font-semibold text-slate-400">({feedbacks.length})</span>

@@ -143,6 +143,7 @@ const hotspots: HotspotData[] = [
     what: "Massive wildfires burned across Australia for months, destroying thousands of homes and killing or displacing nearly 3 billion animals.",
     climateLink: "Hotter and drier conditions caused by climate change increased fire risk and made the fires more severe and long-lasting.",
     specialFact: "Smoke from the fires circled the globe and was detected in South America.",
+    image: "/images/worldmap-2/Collection page image Australian Bushfire 2019-20.jpg",
   },
   {
     id: "great-barrier-reef",
@@ -158,6 +159,7 @@ const hotspots: HotspotData[] = [
     what: "Large sections of the Great Barrier Reef have experienced coral bleaching events, damaging marine ecosystems.",
     climateLink: "Rising ocean temperatures stress coral, causing them to lose algae that provide food and color.",
     specialFact: "Some reef areas have experienced repeated bleaching events within just a few years.",
+    image: "/images/worldmap-2/CORAL AUS.jpg",
   },
   {
     id: "hurricane-harvey",
@@ -173,6 +175,7 @@ const hotspots: HotspotData[] = [
     what: "Severe hurricane caused massive flooding in Texas, especially Houston, displacing thousands of people.",
     climateLink: "Warmer ocean temperatures increase hurricane strength and rainfall intensity.",
     specialFact: "Harvey dumped over 1.5 meters of rainfall in some areas.",
+    image: "/images/worldmap-2/hurricane-harvey-0827-file-restricted.jpg",
   },
   {
     id: "amazon-fires",
@@ -188,6 +191,7 @@ const hotspots: HotspotData[] = [
     what: "Large-scale forest fires spread across the Amazon, destroying vast areas of rainforest.",
     climateLink: "Deforestation combined with hotter, drier conditions linked to climate change increased fire risk.",
     specialFact: "The Amazon produces about 20% of the world's oxygen-producing capacity in ecosystems.",
+    image: "/images/worldmap-2/amazon-wildfires-unf.jpg",
   },
   {
     id: "greenland-melt",
@@ -203,6 +207,7 @@ const hotspots: HotspotData[] = [
     what: "Greenland experienced record ice melt, contributing significantly to global sea level rise.",
     climateLink: "Rising global temperatures are accelerating ice sheet loss, especially in polar regions.",
     specialFact: "In one summer, Greenland lost over 500 billion tons of ice.",
+    image: "/images/worldmap-2/greenland-is-melting.webp",
   },
   {
     id: "jakarta-flooding",
@@ -218,6 +223,7 @@ const hotspots: HotspotData[] = [
     what: "Severe flooding affected Indonesia's capital, displacing thousands of people and damaging infrastructure.",
     climateLink: "Sea level rise combined with heavy rainfall increases flood risk in low-lying coastal cities.",
     specialFact: "Jakarta is sinking as well as facing rising sea levels, making it highly vulnerable.",
+    image: "/images/worldmap-2/floods-jakarta- (1).jpeg",
   },
   {
     id: "siberian-heatwave",
@@ -233,6 +239,7 @@ const hotspots: HotspotData[] = [
     what: "Siberia experienced extreme heat, with wildfires and permafrost melting across vast regions.",
     climateLink: "Arctic regions are warming much faster than the global average due to climate change.",
     specialFact: "Temperatures reached 38°C in a region normally near freezing.",
+    image: "/images/worldmap-2/SIBERIA.jpg",
   },
   {
     id: "china-heatwave",
@@ -248,6 +255,7 @@ const hotspots: HotspotData[] = [
     what: "China experienced one of its longest and most intense heatwaves, with temperatures exceeding 40°C in many regions. Major rivers like the Yangtze saw water levels drop, affecting agriculture, drinking water, and hydropower.",
     climateLink: "Climate change is increasing the frequency and duration of extreme heat events, leading to droughts and water shortages.",
     specialFact: "The heatwave lasted over 70 days, making it one of the longest ever recorded in China.",
+    image: "/images/worldmap-2/3a149669-4724-47e2-81e9-ee09322c7902.jpeg",
   },
 ];
 
